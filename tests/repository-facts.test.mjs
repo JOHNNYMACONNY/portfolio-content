@@ -17,11 +17,13 @@ const repositoryResponse = {
 };
 
 test('allowlisted facts create one minimal repositoryMetadata change', () => {
+  const projectWithoutMetadata = structuredClone(sourceProject);
+  delete projectWithoutMetadata.repositoryMetadata;
   const metadata = buildRepositoryMetadata('JOHNNYMACONNY/mighty-mouse', repositoryResponse, null, ['local-ai']);
-  const result = applyRepositoryFacts(sourceProject, 'JOHNNYMACONNY/mighty-mouse', metadata);
+  const result = applyRepositoryFacts(projectWithoutMetadata, 'JOHNNYMACONNY/mighty-mouse', metadata);
   assert.equal(result.changed, true);
   assert.deepEqual(result.project.repositoryMetadata.topics, ['local-ai']);
-  assert.deepEqual(verifyAutomaticProjectChange(sourceProject, result.project).changedPaths.sort(), [
+  assert.deepEqual(verifyAutomaticProjectChange(projectWithoutMetadata, result.project).changedPaths.sort(), [
     '/repositoryMetadata/archived',
     '/repositoryMetadata/latestRelease',
     '/repositoryMetadata/primaryLanguage',

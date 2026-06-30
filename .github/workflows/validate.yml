@@ -9,6 +9,7 @@ on:
       - 'scripts/**'
       - 'proposals/**'
       - 'evidence-packets/**'
+      - 'tests/**'
       - 'package.json'
       - 'package-lock.json'
   workflow_dispatch:
