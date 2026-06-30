@@ -166,6 +166,15 @@
         ]
       },
       "ownership": "Original evaluation harness, benchmark workflow, protocol experiments, verification gates, and CLI. Model runtimes and foundation models are third-party systems.",
+      "repositoryMetadata": {
+        "archived": false,
+        "latestRelease": null,
+        "primaryLanguage": "Python",
+        "pushedAt": "2026-06-30T19:57:01Z",
+        "repository": "JOHNNYMACONNY/mighty-mouse",
+        "topics": [],
+        "url": "https://github.com/JOHNNYMACONNY/mighty-mouse"
+      },
       "repositoryMetadataPolicy": {
         "approvedTopics": [],
         "automaticFields": [
