@@ -7,6 +7,8 @@ on:
       - 'assets/**'
       - 'schemas/**'
       - 'scripts/**'
+      - 'proposals/**'
+      - 'evidence-packets/**'
       - 'package.json'
       - 'package-lock.json'
   workflow_dispatch:
@@ -26,6 +28,7 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run validate
+      - run: npm run validate:proposals
       - run: npm run compile
       - name: Require committed compiled output
         run: git diff --exit-code -- dist

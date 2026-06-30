@@ -166,9 +166,25 @@
         ]
       },
       "ownership": "Original evaluation harness, benchmark workflow, protocol experiments, verification gates, and CLI. Model runtimes and foundation models are third-party systems.",
+      "repositoryMetadataPolicy": {
+        "approvedTopics": [],
+        "automaticFields": [
+          "repositoryMetadata.archived",
+          "repositoryMetadata.homepageUrl",
+          "repositoryMetadata.latestRelease",
+          "repositoryMetadata.primaryLanguage",
+          "repositoryMetadata.pushedAt",
+          "repositoryMetadata.repository",
+          "repositoryMetadata.topics",
+          "repositoryMetadata.url"
+        ]
+      },
       "role": "Creator, researcher, and systems engineer",
       "shortOutcome": "An evaluation-driven harness for finding faster, more reliable ways to run small local coding models.",
       "slug": "mighty-mouse",
+      "sourceRepositories": [
+        "JOHNNYMACONNY/mighty-mouse"
+      ],
       "status": "active",
       "tags": [
         "Python",
