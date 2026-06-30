@@ -1,0 +1,169 @@
+{
+  "slug": "mighty-mouse",
+  "title": "Mighty Mouse",
+  "shortOutcome": "An evaluation-driven harness for finding faster, more reliable ways to run small local coding models.",
+  "kind": "ai",
+  "discipline": "Agent evaluation / local AI systems",
+  "status": "active",
+  "year": 2026,
+  "role": "Creator, researcher, and systems engineer",
+  "featured": true,
+  "homepage": true,
+  "tags": [
+    "Python",
+    "Evaluation",
+    "Local models",
+    "CLI",
+    "Autoresearch"
+  ],
+  "accent": "signal",
+  "ownership": "Original evaluation harness, benchmark workflow, protocol experiments, verification gates, and CLI. Model runtimes and foundation models are third-party systems.",
+  "evidence": [
+    {
+      "label": "Paired validation",
+      "value": "30 trials",
+      "detail": "15 baseline and 15 Lean Protocol runs across the promotion suite.",
+      "provenance": "eval/results/PROMOTION_NOTES.md — Phase 36 validation"
+    },
+    {
+      "label": "Verified reliability",
+      "value": "100% / 100%",
+      "detail": "Both cohorts passed every verification gate in the 30-trial validation.",
+      "provenance": "eval/results/PROMOTION_NOTES.md — Phase 36 validation",
+      "limitation": "This result applies to the recorded benchmark suite, configuration, and environment—not every model or coding task."
+    },
+    {
+      "label": "Average speedup",
+      "value": "29.5%",
+      "detail": "Average latency improvement for Lean versus baseline across the paired validation.",
+      "provenance": "eval/results/PROMOTION_NOTES.md — Phase 36 validation"
+    },
+    {
+      "label": "Separate mini-spike",
+      "value": "~45%",
+      "detail": "Average execution-time reduction across three fixed-environment tasks in an earlier, smaller spike.",
+      "provenance": "eval/results/spike_summary.md — clean Trial 3",
+      "limitation": "A three-task exploratory result reported separately from the 30-trial promotion validation."
+    }
+  ],
+  "links": [],
+  "media": [],
+  "narrative": {
+    "problem": {
+      "title": "Small models can be capable and still fail the workflow.",
+      "body": [
+        "Local coding models are attractive because they are private, inexpensive, and available without a network dependency. The hard part is not getting one impressive answer; it is producing useful changes repeatedly under real file, format, scope, and verification constraints.",
+        "Mighty Mouse turns prompt and harness decisions into controlled experiments. The same tasks run through competing configurations, and promotion depends on verified outcomes rather than subjective output quality."
+      ]
+    },
+    "ownership": {
+      "title": "The harness is the product; the models are replaceable inputs.",
+      "body": [
+        "I designed and built the orchestration, task fixtures, response parsing, benchmark runners, telemetry, promotion gates, safety checks, and command-line interface.",
+        "The system runs third-party local model runtimes and foundation models. I am not claiming authorship of those models; the work is in making their behavior measurable, configurable, and operationally useful."
+      ]
+    },
+    "systemMap": [
+      {
+        "label": "Task fixture",
+        "detail": "A scoped coding problem with expected files and assertions.",
+        "stage": "input"
+      },
+      {
+        "label": "Candidate config",
+        "detail": "Model, protocol, prompt format, limits, and tool policy.",
+        "stage": "input"
+      },
+      {
+        "label": "Isolated workspace",
+        "detail": "Each run receives controlled files and hidden evaluator state.",
+        "stage": "state"
+      },
+      {
+        "label": "Runner + parser",
+        "detail": "Executes the candidate and converts output into a deterministic change.",
+        "stage": "decision"
+      },
+      {
+        "label": "Verification gate",
+        "detail": "Tests, schema, scope, and mandatory-format checks decide success.",
+        "stage": "decision"
+      },
+      {
+        "label": "Promotion record",
+        "detail": "Latency, tokens, pass rate, and regressions become an auditable decision.",
+        "stage": "output"
+      },
+      {
+        "label": "Abort / quarantine",
+        "detail": "Parser errors, unsafe scope, or failed tests stop promotion.",
+        "stage": "failure"
+      }
+    ],
+    "decisions": [
+      {
+        "title": "Verification outranks eloquence",
+        "decision": "Score changed files and executable checks instead of grading the model’s explanation.",
+        "consequence": "Configurations can be compared on the result that matters: whether the task was completed safely and correctly."
+      },
+      {
+        "title": "Remove reasoning when evidence permits",
+        "decision": "The Lean Protocol skips expensive planning behavior for task classes where verification proves it unnecessary.",
+        "consequence": "The promoted configuration improved average latency without reducing the recorded pass rate."
+      },
+      {
+        "title": "Treat parser failures as system failures",
+        "decision": "Output contracts, hidden state, fallbacks, and telemetry became first-class harness concerns.",
+        "consequence": "A model response is not called successful unless it can survive the path from text to verified change."
+      }
+    ],
+    "buildRecord": [
+      {
+        "label": "01 / CONTROL",
+        "title": "Reproducible task suite",
+        "detail": "Baseline and candidate configurations execute the same versioned tasks in isolated workspaces."
+      },
+      {
+        "label": "02 / OBSERVE",
+        "title": "Per-run telemetry",
+        "detail": "Latency, token use, parser state, changed files, assertions, and failure categories are captured."
+      },
+      {
+        "label": "03 / DECIDE",
+        "title": "Promotion protocol",
+        "detail": "Candidates must retain reliability, pass replay gates, and clear safety checks before becoming defaults."
+      },
+      {
+        "label": "04 / OPERATE",
+        "title": "CLI and diagnostics",
+        "detail": "A compact command surface runs doctor checks, demos, benchmarks, and result inspection."
+      }
+    ],
+    "failures": [
+      {
+        "title": "Decomposition produced parser-contract failures",
+        "observed": "An early decomposition strategy returned output the harness could not apply, producing zero-second parser failures.",
+        "response": "Standardized stdout, isolated hidden state, added metadata fallbacks, and captured per-pass telemetry before reevaluation.",
+        "status": "resolved"
+      },
+      {
+        "title": "One network task regressed under Lean",
+        "observed": "The validation watchlist recorded a 37.6% latency regression for task_005 even though the task passed.",
+        "response": "Kept the result visible as a monitoring item rather than averaging it away.",
+        "status": "monitoring"
+      },
+      {
+        "title": "Broader local-model claims remain unproven",
+        "observed": "Current evidence is tied to the benchmark suite and tested configurations.",
+        "response": "Expand model and task diversity before claiming general performance improvements.",
+        "status": "open"
+      }
+    ],
+    "currentStatus": {
+      "title": "Active research system with a usable operator surface.",
+      "body": [
+        "The evaluation harness, Lean promotion record, diagnostics, benchmark runners, and CLI are working. Research continues around model diversity, decomposition, autoresearch, and identifying configurations that generalize beyond a single suite."
+      ]
+    }
+  }
+}

@@ -1,0 +1,55 @@
+[
+  {
+    "slug": "audio-publish-pipeline",
+    "title": "Audio → Website Pipeline",
+    "outcome": "A new DAW export is detected, uploaded, and made available on the site without a manual transfer chain.",
+    "kind": "operations",
+    "status": "active",
+    "tags": [
+      "File watching",
+      "Cloud upload",
+      "Audio delivery"
+    ],
+    "accent": "studio"
+  },
+  {
+    "slug": "social-carousel-drafter",
+    "title": "Social Carousel Drafter",
+    "outcome": "Selects evenly across image folders, records prior use, and creates editable Meta Business Suite drafts without reposting an asset.",
+    "kind": "creative",
+    "status": "active",
+    "tags": [
+      "Apple Photos",
+      "Meta",
+      "State tracking"
+    ],
+    "accent": "warm"
+  },
+  {
+    "slug": "multicam-sync-editor",
+    "title": "Automated Multi-camera Editor",
+    "outcome": "Analyzes two recordings of the same event, aligns them from audio/video evidence, and composes desktop plus face-camera output.",
+    "kind": "creative",
+    "status": "experimental",
+    "tags": [
+      "Media analysis",
+      "Synchronization",
+      "Video"
+    ],
+    "accent": "studio"
+  },
+  {
+    "slug": "kraken-margin-bot",
+    "title": "Kraken Margin Trading Bot",
+    "outcome": "A private execution system for rule-based margin orders, position state, and exchange-specific safeguards.",
+    "kind": "experiment",
+    "status": "private",
+    "tags": [
+      "Python",
+      "Kraken API",
+      "Risk controls"
+    ],
+    "accent": "sea",
+    "riskNote": "Experimental software, not financial advice or a performance claim. No return figures are published."
+  }
+]

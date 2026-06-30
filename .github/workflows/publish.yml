@@ -1,0 +1,53 @@
+name: Publish portfolio content
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/**'
+      - 'assets/**'
+      - 'schemas/**'
+      - 'scripts/**'
+      - 'package.json'
+      - 'package-lock.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run validate
+      - run: npm run compile
+      - name: Require committed compiled output
+        run: git diff --exit-code -- dist
+      - name: Detect affected content
+        id: affected
+        run: node scripts/detect-affected-routes.mjs --before "${{ github.event.before || github.event.repository.default_branch }}" --after "${{ github.sha }}"
+      - name: Revalidate and verify live site
+        env:
+          PORTFOLIO_SITE_URL: ${{ secrets.PORTFOLIO_SITE_URL }}
+          PORTFOLIO_REVALIDATE_SECRET: ${{ secrets.PORTFOLIO_REVALIDATE_SECRET }}
+          AFFECTED_JSON: ${{ steps.affected.outputs.payload }}
+        run: node scripts/publish-site.mjs
+      - name: Report publication failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Portfolio publication failed"
+          existing="$(gh issue list --state open --search "$title in:title" --json number --jq '.[0].number // empty')"
+          body="Publication failed for commit $GITHUB_SHA. Inspect workflow run $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID."
+          if [ -n "$existing" ]; then gh issue comment "$existing" --body "$body"; else gh issue create --title "$title" --body "$body"; fi

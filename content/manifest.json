@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": "2026-06-30.1",
+  "publishedAt": "2026-06-30T00:00:00.000Z",
+  "minimumWebsiteSchemaVersion": 1,
+  "flagshipOrder": [
+    "mighty-mouse",
+    "life-ops",
+    "la-studio-finder"
+  ],
+  "homepageOrder": [
+    "mighty-mouse",
+    "life-ops",
+    "la-studio-finder"
+  ],
+  "projectFiles": {
+    "mighty-mouse": "content/projects/mighty-mouse.json",
+    "life-ops": "content/projects/life-ops.json",
+    "la-studio-finder": "content/projects/la-studio-finder.json"
+  },
+  "supportingFile": "content/supporting/projects.json",
+  "redirects": []
+}

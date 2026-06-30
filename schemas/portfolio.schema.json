@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.ybfstudio.com/schemas/portfolio.schema.json",
+  "title": "YBF Portfolio Document",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "contentVersion",
+    "publishedAt",
+    "flagshipOrder",
+    "homepageOrder",
+    "projects",
+    "supportingWork",
+    "redirects"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "contentVersion": { "type": "string", "minLength": 1 },
+    "publishedAt": { "type": "string", "format": "date-time" },
+    "flagshipOrder": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/slug" } },
+    "homepageOrder": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/slug" } },
+    "projects": { "type": "array", "items": { "$ref": "#/$defs/project" } },
+    "supportingWork": { "type": "array", "items": { "$ref": "#/$defs/supporting" } },
+    "redirects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["from", "to", "permanent"],
+        "properties": {
+          "from": { "$ref": "#/$defs/slug" },
+          "to": { "$ref": "#/$defs/slug" },
+          "permanent": { "type": "boolean" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "text": { "type": "string", "minLength": 1 },
+    "project": {
+      "type": "object",
+      "required": [
+        "slug", "title", "shortOutcome", "kind", "discipline", "status", "year", "role",
+        "featured", "homepage", "tags", "accent", "ownership", "evidence", "links", "media", "narrative"
+      ],
+      "properties": {
+        "slug": { "$ref": "#/$defs/slug" },
+        "title": { "$ref": "#/$defs/text" },
+        "shortOutcome": { "$ref": "#/$defs/text" },
+        "kind": { "enum": ["ai", "operations", "product", "creative", "experiment"] },
+        "discipline": { "$ref": "#/$defs/text" },
+        "status": { "enum": ["active", "shipped", "experimental", "private", "in-development"] },
+        "year": { "type": "integer", "minimum": 2000, "maximum": 2100 },
+        "role": { "$ref": "#/$defs/text" },
+        "featured": { "type": "boolean" },
+        "homepage": { "type": "boolean" },
+        "tags": { "type": "array", "items": { "$ref": "#/$defs/text" } },
+        "accent": { "enum": ["signal", "warm", "sea", "studio"] },
+        "ownership": { "type": "string", "minLength": 20 },
+        "contentVersion": { "$ref": "#/$defs/text" },
+        "sourceRepositories": { "type": "array", "items": { "type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$" } },
+        "lastVerifiedAt": { "type": "string", "format": "date-time" },
+        "visibility": { "enum": ["published", "hidden"] },
+        "repositoryMetadataPolicy": { "type": "object" },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["label", "value", "detail"],
+            "properties": {
+              "label": { "$ref": "#/$defs/text" },
+              "value": { "$ref": "#/$defs/text" },
+              "detail": { "$ref": "#/$defs/text" },
+              "provenance": { "$ref": "#/$defs/text" },
+              "sourceUrl": { "type": "string", "format": "uri" },
+              "verifiedAt": { "type": "string", "format": "date-time" },
+              "limitation": { "$ref": "#/$defs/text" }
+            }
+          }
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "href", "kind"],
+            "properties": {
+              "label": { "$ref": "#/$defs/text" },
+              "href": { "type": "string", "format": "uri" },
+              "kind": { "enum": ["live", "source", "detail"] }
+            }
+          }
+        },
+        "media": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "src", "alt", "kind"],
+            "properties": {
+              "label": { "$ref": "#/$defs/text" },
+              "src": { "type": "string", "format": "uri" },
+              "alt": { "$ref": "#/$defs/text" },
+              "kind": { "enum": ["image", "video", "audio"] },
+              "integrity": { "type": "string", "pattern": "^sha256-[A-Za-z0-9+/=]+$" }
+            }
+          }
+        },
+        "narrative": {
+          "type": "object",
+          "required": ["problem", "ownership", "systemMap", "decisions", "buildRecord", "failures", "currentStatus"],
+          "properties": {
+            "problem": { "$ref": "#/$defs/narrativeSection" },
+            "ownership": { "$ref": "#/$defs/narrativeSection" },
+            "systemMap": { "type": "array", "minItems": 5 },
+            "decisions": { "type": "array", "minItems": 2 },
+            "buildRecord": { "type": "array", "minItems": 3 },
+            "failures": { "type": "array", "minItems": 2 },
+            "currentStatus": { "$ref": "#/$defs/narrativeSection" }
+          }
+        }
+      }
+    },
+    "narrativeSection": {
+      "type": "object",
+      "required": ["title", "body"],
+      "properties": {
+        "eyebrow": { "$ref": "#/$defs/text" },
+        "title": { "$ref": "#/$defs/text" },
+        "body": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/text" } }
+      }
+    },
+    "supporting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slug", "title", "outcome", "kind", "status", "tags", "accent"],
+      "properties": {
+        "slug": { "$ref": "#/$defs/slug" },
+        "title": { "$ref": "#/$defs/text" },
+        "outcome": { "$ref": "#/$defs/text" },
+        "kind": { "enum": ["ai", "operations", "product", "creative", "experiment"] },
+        "status": { "enum": ["active", "shipped", "experimental", "private", "in-development"] },
+        "tags": { "type": "array", "items": { "$ref": "#/$defs/text" } },
+        "accent": { "enum": ["signal", "warm", "sea", "studio"] },
+        "riskNote": { "$ref": "#/$defs/text" }
+      }
+    }
+  }
+}

@@ -1,0 +1,564 @@
+{
+  "contentVersion": "2026-06-30.1",
+  "flagshipOrder": [
+    "mighty-mouse",
+    "life-ops",
+    "la-studio-finder"
+  ],
+  "homepageOrder": [
+    "mighty-mouse",
+    "life-ops",
+    "la-studio-finder"
+  ],
+  "projects": [
+    {
+      "accent": "signal",
+      "discipline": "Agent evaluation / local AI systems",
+      "evidence": [
+        {
+          "detail": "15 baseline and 15 Lean Protocol runs across the promotion suite.",
+          "label": "Paired validation",
+          "provenance": "eval/results/PROMOTION_NOTES.md — Phase 36 validation",
+          "value": "30 trials"
+        },
+        {
+          "detail": "Both cohorts passed every verification gate in the 30-trial validation.",
+          "label": "Verified reliability",
+          "limitation": "This result applies to the recorded benchmark suite, configuration, and environment—not every model or coding task.",
+          "provenance": "eval/results/PROMOTION_NOTES.md — Phase 36 validation",
+          "value": "100% / 100%"
+        },
+        {
+          "detail": "Average latency improvement for Lean versus baseline across the paired validation.",
+          "label": "Average speedup",
+          "provenance": "eval/results/PROMOTION_NOTES.md — Phase 36 validation",
+          "value": "29.5%"
+        },
+        {
+          "detail": "Average execution-time reduction across three fixed-environment tasks in an earlier, smaller spike.",
+          "label": "Separate mini-spike",
+          "limitation": "A three-task exploratory result reported separately from the 30-trial promotion validation.",
+          "provenance": "eval/results/spike_summary.md — clean Trial 3",
+          "value": "~45%"
+        }
+      ],
+      "featured": true,
+      "homepage": true,
+      "kind": "ai",
+      "links": [],
+      "media": [],
+      "narrative": {
+        "buildRecord": [
+          {
+            "detail": "Baseline and candidate configurations execute the same versioned tasks in isolated workspaces.",
+            "label": "01 / CONTROL",
+            "title": "Reproducible task suite"
+          },
+          {
+            "detail": "Latency, token use, parser state, changed files, assertions, and failure categories are captured.",
+            "label": "02 / OBSERVE",
+            "title": "Per-run telemetry"
+          },
+          {
+            "detail": "Candidates must retain reliability, pass replay gates, and clear safety checks before becoming defaults.",
+            "label": "03 / DECIDE",
+            "title": "Promotion protocol"
+          },
+          {
+            "detail": "A compact command surface runs doctor checks, demos, benchmarks, and result inspection.",
+            "label": "04 / OPERATE",
+            "title": "CLI and diagnostics"
+          }
+        ],
+        "currentStatus": {
+          "body": [
+            "The evaluation harness, Lean promotion record, diagnostics, benchmark runners, and CLI are working. Research continues around model diversity, decomposition, autoresearch, and identifying configurations that generalize beyond a single suite."
+          ],
+          "title": "Active research system with a usable operator surface."
+        },
+        "decisions": [
+          {
+            "consequence": "Configurations can be compared on the result that matters: whether the task was completed safely and correctly.",
+            "decision": "Score changed files and executable checks instead of grading the model’s explanation.",
+            "title": "Verification outranks eloquence"
+          },
+          {
+            "consequence": "The promoted configuration improved average latency without reducing the recorded pass rate.",
+            "decision": "The Lean Protocol skips expensive planning behavior for task classes where verification proves it unnecessary.",
+            "title": "Remove reasoning when evidence permits"
+          },
+          {
+            "consequence": "A model response is not called successful unless it can survive the path from text to verified change.",
+            "decision": "Output contracts, hidden state, fallbacks, and telemetry became first-class harness concerns.",
+            "title": "Treat parser failures as system failures"
+          }
+        ],
+        "failures": [
+          {
+            "observed": "An early decomposition strategy returned output the harness could not apply, producing zero-second parser failures.",
+            "response": "Standardized stdout, isolated hidden state, added metadata fallbacks, and captured per-pass telemetry before reevaluation.",
+            "status": "resolved",
+            "title": "Decomposition produced parser-contract failures"
+          },
+          {
+            "observed": "The validation watchlist recorded a 37.6% latency regression for task_005 even though the task passed.",
+            "response": "Kept the result visible as a monitoring item rather than averaging it away.",
+            "status": "monitoring",
+            "title": "One network task regressed under Lean"
+          },
+          {
+            "observed": "Current evidence is tied to the benchmark suite and tested configurations.",
+            "response": "Expand model and task diversity before claiming general performance improvements.",
+            "status": "open",
+            "title": "Broader local-model claims remain unproven"
+          }
+        ],
+        "ownership": {
+          "body": [
+            "I designed and built the orchestration, task fixtures, response parsing, benchmark runners, telemetry, promotion gates, safety checks, and command-line interface.",
+            "The system runs third-party local model runtimes and foundation models. I am not claiming authorship of those models; the work is in making their behavior measurable, configurable, and operationally useful."
+          ],
+          "title": "The harness is the product; the models are replaceable inputs."
+        },
+        "problem": {
+          "body": [
+            "Local coding models are attractive because they are private, inexpensive, and available without a network dependency. The hard part is not getting one impressive answer; it is producing useful changes repeatedly under real file, format, scope, and verification constraints.",
+            "Mighty Mouse turns prompt and harness decisions into controlled experiments. The same tasks run through competing configurations, and promotion depends on verified outcomes rather than subjective output quality."
+          ],
+          "title": "Small models can be capable and still fail the workflow."
+        },
+        "systemMap": [
+          {
+            "detail": "A scoped coding problem with expected files and assertions.",
+            "label": "Task fixture",
+            "stage": "input"
+          },
+          {
+            "detail": "Model, protocol, prompt format, limits, and tool policy.",
+            "label": "Candidate config",
+            "stage": "input"
+          },
+          {
+            "detail": "Each run receives controlled files and hidden evaluator state.",
+            "label": "Isolated workspace",
+            "stage": "state"
+          },
+          {
+            "detail": "Executes the candidate and converts output into a deterministic change.",
+            "label": "Runner + parser",
+            "stage": "decision"
+          },
+          {
+            "detail": "Tests, schema, scope, and mandatory-format checks decide success.",
+            "label": "Verification gate",
+            "stage": "decision"
+          },
+          {
+            "detail": "Latency, tokens, pass rate, and regressions become an auditable decision.",
+            "label": "Promotion record",
+            "stage": "output"
+          },
+          {
+            "detail": "Parser errors, unsafe scope, or failed tests stop promotion.",
+            "label": "Abort / quarantine",
+            "stage": "failure"
+          }
+        ]
+      },
+      "ownership": "Original evaluation harness, benchmark workflow, protocol experiments, verification gates, and CLI. Model runtimes and foundation models are third-party systems.",
+      "role": "Creator, researcher, and systems engineer",
+      "shortOutcome": "An evaluation-driven harness for finding faster, more reliable ways to run small local coding models.",
+      "slug": "mighty-mouse",
+      "status": "active",
+      "tags": [
+        "Python",
+        "Evaluation",
+        "Local models",
+        "CLI",
+        "Autoresearch"
+      ],
+      "title": "Mighty Mouse",
+      "year": 2026
+    },
+    {
+      "accent": "warm",
+      "discipline": "Agentic workflow / knowledge operations",
+      "evidence": [
+        {
+          "detail": "The system is the working interface for active priorities, projects, reference material, and repeatable workflows.",
+          "label": "Operational use",
+          "limitation": "Personal records remain private; this case study uses a sanitized architecture and no private messages.",
+          "value": "Daily"
+        },
+        {
+          "detail": "Strategy, plans, weekly execution, active pipelines, offers, and workflows each have an explicit canonical home.",
+          "label": "Routing model",
+          "provenance": "04_Workflows/LifeOps_Vault_Manager_Rules.md",
+          "value": "6 lanes"
+        },
+        {
+          "detail": "Update the existing owner, then weekly context, then inbox, and only create a file when no canonical home exists.",
+          "label": "Write safety",
+          "provenance": "04_Workflows/LifeOps_OpenClaw_AntiGravity_Contract.md",
+          "value": "4-step policy"
+        }
+      ],
+      "featured": true,
+      "homepage": true,
+      "kind": "operations",
+      "links": [],
+      "media": [],
+      "narrative": {
+        "buildRecord": [
+          {
+            "detail": "Strategy, execution, pipeline, offers, workflows, and inbox each have defined responsibility.",
+            "label": "01 / MAP",
+            "title": "Canonical vault architecture"
+          },
+          {
+            "detail": "Safe reads, write order, escalation points, permissions, and anti-sprawl rules are documented.",
+            "label": "02 / GOVERN",
+            "title": "Agent authority contract"
+          },
+          {
+            "detail": "Daily use is separated into focused contexts while sharing the same controlled operating layer.",
+            "label": "03 / INTERFACE",
+            "title": "Telegram topic lanes"
+          },
+          {
+            "detail": "Reusable tools connect conversations to real workflows instead of stopping at advice.",
+            "label": "04 / EXTEND",
+            "title": "Skills and automations"
+          }
+        ],
+        "currentStatus": {
+          "body": [
+            "LifeOps is not a public SaaS product. It is an operating system under continuous use, with new skills and workflow connections added when a repeated real-world need earns them."
+          ],
+          "title": "Private, active, and used daily."
+        },
+        "decisions": [
+          {
+            "consequence": "Responses stay grounded while reducing irrelevant context and accidental disclosure.",
+            "decision": "The agent starts with indexes, the current weekly board, and targeted files instead of loading the vault.",
+            "title": "Pointers before bulk context"
+          },
+          {
+            "consequence": "The system resists the note sprawl that makes many second brains harder to trust over time.",
+            "decision": "The write router updates the file that already owns a fact before creating anything new.",
+            "title": "Existing truth before new documents"
+          },
+          {
+            "consequence": "The system remains inspectable and useful outside any single agent session.",
+            "decision": "Durable decisions are routed into explicit files with authority boundaries.",
+            "title": "Conversation is an interface, not the database"
+          }
+        ],
+        "failures": [
+          {
+            "observed": "Unconstrained capture duplicated facts and weakened the source-of-truth model.",
+            "response": "Added an explicit routing order and anti-sprawl rule that makes new files the last option.",
+            "status": "resolved",
+            "title": "Agents tend to create a new note for every thought"
+          },
+          {
+            "observed": "The strongest evidence contains private people, plans, financial details, and conversations.",
+            "response": "Show architecture, redacted field shapes, and synthetic examples—not screenshots of the live vault.",
+            "status": "monitoring",
+            "title": "Personal context cannot become portfolio media"
+          },
+          {
+            "observed": "Personality, skills, and routing rules sit on top of an evolving upstream runtime.",
+            "response": "Keep custom contracts in inspectable files and test critical lanes after upgrades.",
+            "status": "open",
+            "title": "Framework upgrades can disturb custom behavior"
+          }
+        ],
+        "ownership": {
+          "body": [
+            "Hermes/OpenClaw supplies the general agent runtime. I built the working system around it: Telegram topic lanes, personality and response conventions, vault maps, memory boundaries, project skills, action permissions, and automations such as audio delivery and market execution.",
+            "The interesting engineering is the governance layer—deciding what the agent may read, where it may write, when it must ask, and which file remains authoritative after a conversation ends."
+          ],
+          "title": "An upstream agent framework, heavily shaped into a personal operating layer."
+        },
+        "problem": {
+          "body": [
+            "Projects, people, ideas, client work, audio operations, and career decisions arrive through different tools and at different speeds. A conventional notes vault stores information, but it still depends on consistent manual filing and retrieval.",
+            "LifeOps gives the agent a controlled way to read current context, route new facts, and update existing sources of truth from the conversational surface I already use every day."
+          ],
+          "title": "A second brain fails when capture creates more maintenance."
+        },
+        "systemMap": [
+          {
+            "detail": "Focused conversations separate projects and operational contexts.",
+            "label": "Telegram lanes",
+            "stage": "input"
+          },
+          {
+            "detail": "Targeted project records, workflows, and tool state are read only when relevant.",
+            "label": "Files + services",
+            "stage": "input"
+          },
+          {
+            "detail": "The weekly execution layer holds live priorities and next actions.",
+            "label": "Current board",
+            "stage": "state"
+          },
+          {
+            "detail": "Read/write lanes and permissions determine what the agent may change.",
+            "label": "Authority contract",
+            "stage": "decision"
+          },
+          {
+            "detail": "Existing owner first; weekly board second; inbox if uncertain; new file last.",
+            "label": "Canonical router",
+            "stage": "decision"
+          },
+          {
+            "detail": "A fact, task, decision, or workflow lands in its maintained home.",
+            "label": "Durable update",
+            "stage": "output"
+          },
+          {
+            "detail": "Structural edits, conflicts, and sensitive actions return to human review.",
+            "label": "Escalation",
+            "stage": "failure"
+          }
+        ]
+      },
+      "ownership": "I designed the LifeOps information architecture, authority boundaries, Telegram topic lanes, personality layer, skills, and automations. Hermes/OpenClaw is an upstream agent framework that I configure and extend rather than claim as original work.",
+      "role": "System designer, integrator, and daily operator",
+      "shortOutcome": "A private operating system that turns daily conversations into routed, durable context without surrendering human control.",
+      "slug": "life-ops",
+      "status": "active",
+      "tags": [
+        "Hermes",
+        "Telegram",
+        "Obsidian",
+        "Skills",
+        "Automation"
+      ],
+      "title": "LifeOps + Hermes",
+      "year": 2026
+    },
+    {
+      "accent": "sea",
+      "discipline": "Full-stack product / directory operations",
+      "evidence": [
+        {
+          "detail": "The directory is deployed on Vercel with a custom production domain.",
+          "label": "Production",
+          "provenance": "DEPLOYMENT.md and production deployment configuration",
+          "value": "Live"
+        },
+        {
+          "detail": "Visitors can compare studios through geographic and structured directory context.",
+          "label": "Discovery model",
+          "value": "Map + filters"
+        },
+        {
+          "detail": "Canonical routes, sitemap controls, thin-page audits, and content standards support organic discovery.",
+          "label": "Search foundation",
+          "provenance": "Production audit and sitemap documentation",
+          "value": "Indexable"
+        }
+      ],
+      "featured": true,
+      "homepage": true,
+      "kind": "product",
+      "links": [
+        {
+          "href": "https://www.larecordingstudiofinder.com",
+          "kind": "live",
+          "label": "Open live directory"
+        }
+      ],
+      "media": [],
+      "narrative": {
+        "buildRecord": [
+          {
+            "detail": "Unstructured public information becomes consistent fields and editorial summaries.",
+            "label": "01 / MODEL",
+            "title": "Comparable studio records"
+          },
+          {
+            "detail": "Visitors move between geographic context, filters, recommendations, and studio detail.",
+            "label": "02 / DISCOVER",
+            "title": "Map and directory experience"
+          },
+          {
+            "detail": "Canonical pages, sitemap policy, metadata, and parameter controls support discoverability.",
+            "label": "03 / PUBLISH",
+            "title": "Search-ready route system"
+          },
+          {
+            "detail": "Scripts and review procedures detect thin, JS-dependent, stale, and incorrectly indexed pages.",
+            "label": "04 / OPERATE",
+            "title": "Production audit loop"
+          }
+        ],
+        "currentStatus": {
+          "body": [
+            "The public directory, map-based discovery experience, studio pages, SEO controls, and production audit workflow are live. The active work is improving content quality, directory coverage, and the path from discovery to a confident studio choice."
+          ],
+          "title": "Shipped and operating in production."
+        },
+        "decisions": [
+          {
+            "consequence": "The product is designed around making a decision, not merely generating indexable pages.",
+            "decision": "Treat content depth and comparison value as quality gates rather than maximizing listing count.",
+            "title": "Directory usefulness before directory size"
+          },
+          {
+            "consequence": "Visitors can reason about both studio fit and the practical cost of getting there.",
+            "decision": "Combine structured filters with map context instead of forcing either list-only or map-only browsing.",
+            "title": "Geography is part of the interface"
+          },
+          {
+            "consequence": "Search acquisition is maintained as a testable system rather than a one-time metadata pass.",
+            "decision": "Canonicalization, parameter handling, sitemap inclusion, and thin-content checks are explicit production gates.",
+            "title": "SEO rules are product rules"
+          }
+        ],
+        "failures": [
+          {
+            "observed": "Thin or repetitive directory pages risked weak visitor utility and weak search performance.",
+            "response": "Introduced content-depth checks, public-route probes, and an audit that flags thin indexable pages.",
+            "status": "resolved",
+            "title": "More pages did not automatically create more value"
+          },
+          {
+            "observed": "Tracking and query variants can create duplicate or low-value route combinations.",
+            "response": "Canonicalize filter surfaces, redirect tracking parameters, and keep the sitemap restricted to intended public pages.",
+            "status": "resolved",
+            "title": "Filter URLs can pollute the search index"
+          },
+          {
+            "observed": "Rates, rooms, equipment, and business status change independently of the application.",
+            "response": "Maintain a correction and update workflow; avoid presenting public-source data as permanently verified.",
+            "status": "monitoring",
+            "title": "Directory facts age"
+          }
+        ],
+        "ownership": {
+          "body": [
+            "I designed and implemented the product, built its studio data and update workflow, created the map and discovery experience, established content and SEO standards, and operate the Vercel deployment.",
+            "Directory listings summarize public business information. A listing is not an endorsement, and accuracy depends on an ongoing maintenance loop."
+          ],
+          "title": "A solo product spanning interface, data, and production operations."
+        },
+        "problem": {
+          "body": [
+            "Artists often compare studios across scattered social profiles, map listings, outdated websites, and word of mouth. Important differences—location, room type, equipment, services, and fit—are difficult to evaluate consistently.",
+            "The directory creates one browsable decision surface while giving individual studios durable, search-friendly pages."
+          ],
+          "title": "Finding a studio is a local-data problem disguised as a search box."
+        },
+        "systemMap": [
+          {
+            "detail": "Public business sites, location data, services, rooms, and amenities.",
+            "label": "Studio sources",
+            "stage": "input"
+          },
+          {
+            "detail": "Normalized studio fields and editorial context form a maintained dataset.",
+            "label": "Directory records",
+            "stage": "state"
+          },
+          {
+            "detail": "Required fields, content depth, route integrity, and duplicate review.",
+            "label": "Quality checks",
+            "stage": "decision"
+          },
+          {
+            "detail": "Search, filters, map context, recommendations, and detail pages.",
+            "label": "Discovery UI",
+            "stage": "output"
+          },
+          {
+            "detail": "Canonical metadata, sitemaps, index controls, and content audits.",
+            "label": "Search surface",
+            "stage": "output"
+          },
+          {
+            "detail": "Stale facts, closed studios, and thin records return to review.",
+            "label": "Correction loop",
+            "stage": "failure"
+          }
+        ]
+      },
+      "ownership": "Original directory product, data workflow, search experience, content system, deployment, and production operations. Studio facts originate from public business information and are maintained as directory data.",
+      "role": "Product designer, developer, researcher, and operator",
+      "shortOutcome": "A production directory that turns a fragmented studio search into a location-aware, comparable decision.",
+      "slug": "la-studio-finder",
+      "status": "shipped",
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "Leaflet",
+        "SEO",
+        "Data operations"
+      ],
+      "title": "LA Recording Studio Finder",
+      "year": 2026
+    }
+  ],
+  "publishedAt": "2026-06-30T00:00:00.000Z",
+  "redirects": [],
+  "schemaVersion": 1,
+  "supportingWork": [
+    {
+      "accent": "studio",
+      "kind": "operations",
+      "outcome": "A new DAW export is detected, uploaded, and made available on the site without a manual transfer chain.",
+      "slug": "audio-publish-pipeline",
+      "status": "active",
+      "tags": [
+        "File watching",
+        "Cloud upload",
+        "Audio delivery"
+      ],
+      "title": "Audio → Website Pipeline"
+    },
+    {
+      "accent": "warm",
+      "kind": "creative",
+      "outcome": "Selects evenly across image folders, records prior use, and creates editable Meta Business Suite drafts without reposting an asset.",
+      "slug": "social-carousel-drafter",
+      "status": "active",
+      "tags": [
+        "Apple Photos",
+        "Meta",
+        "State tracking"
+      ],
+      "title": "Social Carousel Drafter"
+    },
+    {
+      "accent": "studio",
+      "kind": "creative",
+      "outcome": "Analyzes two recordings of the same event, aligns them from audio/video evidence, and composes desktop plus face-camera output.",
+      "slug": "multicam-sync-editor",
+      "status": "experimental",
+      "tags": [
+        "Media analysis",
+        "Synchronization",
+        "Video"
+      ],
+      "title": "Automated Multi-camera Editor"
+    },
+    {
+      "accent": "sea",
+      "kind": "experiment",
+      "outcome": "A private execution system for rule-based margin orders, position state, and exchange-specific safeguards.",
+      "riskNote": "Experimental software, not financial advice or a performance claim. No return figures are published.",
+      "slug": "kraken-margin-bot",
+      "status": "private",
+      "tags": [
+        "Python",
+        "Kraken API",
+        "Risk controls"
+      ],
+      "title": "Kraken Margin Trading Bot"
+    }
+  ]
+}

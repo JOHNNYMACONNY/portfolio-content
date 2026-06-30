@@ -1,0 +1,161 @@
+{
+  "slug": "life-ops",
+  "title": "LifeOps + Hermes",
+  "shortOutcome": "A private operating system that turns daily conversations into routed, durable context without surrendering human control.",
+  "kind": "operations",
+  "discipline": "Agentic workflow / knowledge operations",
+  "status": "active",
+  "year": 2026,
+  "role": "System designer, integrator, and daily operator",
+  "featured": true,
+  "homepage": true,
+  "tags": [
+    "Hermes",
+    "Telegram",
+    "Obsidian",
+    "Skills",
+    "Automation"
+  ],
+  "accent": "warm",
+  "ownership": "I designed the LifeOps information architecture, authority boundaries, Telegram topic lanes, personality layer, skills, and automations. Hermes/OpenClaw is an upstream agent framework that I configure and extend rather than claim as original work.",
+  "evidence": [
+    {
+      "label": "Operational use",
+      "value": "Daily",
+      "detail": "The system is the working interface for active priorities, projects, reference material, and repeatable workflows.",
+      "limitation": "Personal records remain private; this case study uses a sanitized architecture and no private messages."
+    },
+    {
+      "label": "Routing model",
+      "value": "6 lanes",
+      "detail": "Strategy, plans, weekly execution, active pipelines, offers, and workflows each have an explicit canonical home.",
+      "provenance": "04_Workflows/LifeOps_Vault_Manager_Rules.md"
+    },
+    {
+      "label": "Write safety",
+      "value": "4-step policy",
+      "detail": "Update the existing owner, then weekly context, then inbox, and only create a file when no canonical home exists.",
+      "provenance": "04_Workflows/LifeOps_OpenClaw_AntiGravity_Contract.md"
+    }
+  ],
+  "links": [],
+  "media": [],
+  "narrative": {
+    "problem": {
+      "title": "A second brain fails when capture creates more maintenance.",
+      "body": [
+        "Projects, people, ideas, client work, audio operations, and career decisions arrive through different tools and at different speeds. A conventional notes vault stores information, but it still depends on consistent manual filing and retrieval.",
+        "LifeOps gives the agent a controlled way to read current context, route new facts, and update existing sources of truth from the conversational surface I already use every day."
+      ]
+    },
+    "ownership": {
+      "title": "An upstream agent framework, heavily shaped into a personal operating layer.",
+      "body": [
+        "Hermes/OpenClaw supplies the general agent runtime. I built the working system around it: Telegram topic lanes, personality and response conventions, vault maps, memory boundaries, project skills, action permissions, and automations such as audio delivery and market execution.",
+        "The interesting engineering is the governance layer—deciding what the agent may read, where it may write, when it must ask, and which file remains authoritative after a conversation ends."
+      ]
+    },
+    "systemMap": [
+      {
+        "label": "Telegram lanes",
+        "detail": "Focused conversations separate projects and operational contexts.",
+        "stage": "input"
+      },
+      {
+        "label": "Files + services",
+        "detail": "Targeted project records, workflows, and tool state are read only when relevant.",
+        "stage": "input"
+      },
+      {
+        "label": "Current board",
+        "detail": "The weekly execution layer holds live priorities and next actions.",
+        "stage": "state"
+      },
+      {
+        "label": "Authority contract",
+        "detail": "Read/write lanes and permissions determine what the agent may change.",
+        "stage": "decision"
+      },
+      {
+        "label": "Canonical router",
+        "detail": "Existing owner first; weekly board second; inbox if uncertain; new file last.",
+        "stage": "decision"
+      },
+      {
+        "label": "Durable update",
+        "detail": "A fact, task, decision, or workflow lands in its maintained home.",
+        "stage": "output"
+      },
+      {
+        "label": "Escalation",
+        "detail": "Structural edits, conflicts, and sensitive actions return to human review.",
+        "stage": "failure"
+      }
+    ],
+    "decisions": [
+      {
+        "title": "Pointers before bulk context",
+        "decision": "The agent starts with indexes, the current weekly board, and targeted files instead of loading the vault.",
+        "consequence": "Responses stay grounded while reducing irrelevant context and accidental disclosure."
+      },
+      {
+        "title": "Existing truth before new documents",
+        "decision": "The write router updates the file that already owns a fact before creating anything new.",
+        "consequence": "The system resists the note sprawl that makes many second brains harder to trust over time."
+      },
+      {
+        "title": "Conversation is an interface, not the database",
+        "decision": "Durable decisions are routed into explicit files with authority boundaries.",
+        "consequence": "The system remains inspectable and useful outside any single agent session."
+      }
+    ],
+    "buildRecord": [
+      {
+        "label": "01 / MAP",
+        "title": "Canonical vault architecture",
+        "detail": "Strategy, execution, pipeline, offers, workflows, and inbox each have defined responsibility."
+      },
+      {
+        "label": "02 / GOVERN",
+        "title": "Agent authority contract",
+        "detail": "Safe reads, write order, escalation points, permissions, and anti-sprawl rules are documented."
+      },
+      {
+        "label": "03 / INTERFACE",
+        "title": "Telegram topic lanes",
+        "detail": "Daily use is separated into focused contexts while sharing the same controlled operating layer."
+      },
+      {
+        "label": "04 / EXTEND",
+        "title": "Skills and automations",
+        "detail": "Reusable tools connect conversations to real workflows instead of stopping at advice."
+      }
+    ],
+    "failures": [
+      {
+        "title": "Agents tend to create a new note for every thought",
+        "observed": "Unconstrained capture duplicated facts and weakened the source-of-truth model.",
+        "response": "Added an explicit routing order and anti-sprawl rule that makes new files the last option.",
+        "status": "resolved"
+      },
+      {
+        "title": "Personal context cannot become portfolio media",
+        "observed": "The strongest evidence contains private people, plans, financial details, and conversations.",
+        "response": "Show architecture, redacted field shapes, and synthetic examples—not screenshots of the live vault.",
+        "status": "monitoring"
+      },
+      {
+        "title": "Framework upgrades can disturb custom behavior",
+        "observed": "Personality, skills, and routing rules sit on top of an evolving upstream runtime.",
+        "response": "Keep custom contracts in inspectable files and test critical lanes after upgrades.",
+        "status": "open"
+      }
+    ],
+    "currentStatus": {
+      "title": "Private, active, and used daily.",
+      "body": [
+        "LifeOps is not a public SaaS product. It is an operating system under continuous use, with new skills and workflow connections added when a repeated real-world need earns them."
+      ]
+    }
+  }
+}

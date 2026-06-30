@@ -1,0 +1,161 @@
+{
+  "slug": "la-studio-finder",
+  "title": "LA Recording Studio Finder",
+  "shortOutcome": "A production directory that turns a fragmented studio search into a location-aware, comparable decision.",
+  "kind": "product",
+  "discipline": "Full-stack product / directory operations",
+  "status": "shipped",
+  "year": 2026,
+  "role": "Product designer, developer, researcher, and operator",
+  "featured": true,
+  "homepage": true,
+  "tags": [
+    "Next.js",
+    "TypeScript",
+    "Leaflet",
+    "SEO",
+    "Data operations"
+  ],
+  "accent": "sea",
+  "ownership": "Original directory product, data workflow, search experience, content system, deployment, and production operations. Studio facts originate from public business information and are maintained as directory data.",
+  "evidence": [
+    {
+      "label": "Production",
+      "value": "Live",
+      "detail": "The directory is deployed on Vercel with a custom production domain.",
+      "provenance": "DEPLOYMENT.md and production deployment configuration"
+    },
+    {
+      "label": "Discovery model",
+      "value": "Map + filters",
+      "detail": "Visitors can compare studios through geographic and structured directory context."
+    },
+    {
+      "label": "Search foundation",
+      "value": "Indexable",
+      "detail": "Canonical routes, sitemap controls, thin-page audits, and content standards support organic discovery.",
+      "provenance": "Production audit and sitemap documentation"
+    }
+  ],
+  "links": [
+    {
+      "label": "Open live directory",
+      "href": "https://www.larecordingstudiofinder.com",
+      "kind": "live"
+    }
+  ],
+  "media": [],
+  "narrative": {
+    "problem": {
+      "title": "Finding a studio is a local-data problem disguised as a search box.",
+      "body": [
+        "Artists often compare studios across scattered social profiles, map listings, outdated websites, and word of mouth. Important differences—location, room type, equipment, services, and fit—are difficult to evaluate consistently.",
+        "The directory creates one browsable decision surface while giving individual studios durable, search-friendly pages."
+      ]
+    },
+    "ownership": {
+      "title": "A solo product spanning interface, data, and production operations.",
+      "body": [
+        "I designed and implemented the product, built its studio data and update workflow, created the map and discovery experience, established content and SEO standards, and operate the Vercel deployment.",
+        "Directory listings summarize public business information. A listing is not an endorsement, and accuracy depends on an ongoing maintenance loop."
+      ]
+    },
+    "systemMap": [
+      {
+        "label": "Studio sources",
+        "detail": "Public business sites, location data, services, rooms, and amenities.",
+        "stage": "input"
+      },
+      {
+        "label": "Directory records",
+        "detail": "Normalized studio fields and editorial context form a maintained dataset.",
+        "stage": "state"
+      },
+      {
+        "label": "Quality checks",
+        "detail": "Required fields, content depth, route integrity, and duplicate review.",
+        "stage": "decision"
+      },
+      {
+        "label": "Discovery UI",
+        "detail": "Search, filters, map context, recommendations, and detail pages.",
+        "stage": "output"
+      },
+      {
+        "label": "Search surface",
+        "detail": "Canonical metadata, sitemaps, index controls, and content audits.",
+        "stage": "output"
+      },
+      {
+        "label": "Correction loop",
+        "detail": "Stale facts, closed studios, and thin records return to review.",
+        "stage": "failure"
+      }
+    ],
+    "decisions": [
+      {
+        "title": "Directory usefulness before directory size",
+        "decision": "Treat content depth and comparison value as quality gates rather than maximizing listing count.",
+        "consequence": "The product is designed around making a decision, not merely generating indexable pages."
+      },
+      {
+        "title": "Geography is part of the interface",
+        "decision": "Combine structured filters with map context instead of forcing either list-only or map-only browsing.",
+        "consequence": "Visitors can reason about both studio fit and the practical cost of getting there."
+      },
+      {
+        "title": "SEO rules are product rules",
+        "decision": "Canonicalization, parameter handling, sitemap inclusion, and thin-content checks are explicit production gates.",
+        "consequence": "Search acquisition is maintained as a testable system rather than a one-time metadata pass."
+      }
+    ],
+    "buildRecord": [
+      {
+        "label": "01 / MODEL",
+        "title": "Comparable studio records",
+        "detail": "Unstructured public information becomes consistent fields and editorial summaries."
+      },
+      {
+        "label": "02 / DISCOVER",
+        "title": "Map and directory experience",
+        "detail": "Visitors move between geographic context, filters, recommendations, and studio detail."
+      },
+      {
+        "label": "03 / PUBLISH",
+        "title": "Search-ready route system",
+        "detail": "Canonical pages, sitemap policy, metadata, and parameter controls support discoverability."
+      },
+      {
+        "label": "04 / OPERATE",
+        "title": "Production audit loop",
+        "detail": "Scripts and review procedures detect thin, JS-dependent, stale, and incorrectly indexed pages."
+      }
+    ],
+    "failures": [
+      {
+        "title": "More pages did not automatically create more value",
+        "observed": "Thin or repetitive directory pages risked weak visitor utility and weak search performance.",
+        "response": "Introduced content-depth checks, public-route probes, and an audit that flags thin indexable pages.",
+        "status": "resolved"
+      },
+      {
+        "title": "Filter URLs can pollute the search index",
+        "observed": "Tracking and query variants can create duplicate or low-value route combinations.",
+        "response": "Canonicalize filter surfaces, redirect tracking parameters, and keep the sitemap restricted to intended public pages.",
+        "status": "resolved"
+      },
+      {
+        "title": "Directory facts age",
+        "observed": "Rates, rooms, equipment, and business status change independently of the application.",
+        "response": "Maintain a correction and update workflow; avoid presenting public-source data as permanently verified.",
+        "status": "monitoring"
+      }
+    ],
+    "currentStatus": {
+      "title": "Shipped and operating in production.",
+      "body": [
+        "The public directory, map-based discovery experience, studio pages, SEO controls, and production audit workflow are live. The active work is improving content quality, directory coverage, and the path from discovery to a confident studio choice."
+      ]
+    }
+  }
+}
