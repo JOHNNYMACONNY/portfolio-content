@@ -181,5 +181,14 @@
         "The evaluation harness, Lean promotion record, diagnostics, benchmark runners, and CLI are working. Research continues around model diversity, decomposition, autoresearch, and identifying configurations that generalize beyond a single suite."
       ]
     }
+  },
+  "repositoryMetadata": {
+    "archived": false,
+    "latestRelease": null,
+    "primaryLanguage": "Python",
+    "pushedAt": "2026-06-30T19:57:01Z",
+    "repository": "JOHNNYMACONNY/mighty-mouse",
+    "topics": [],
+    "url": "https://github.com/JOHNNYMACONNY/mighty-mouse"
   }
 }
