@@ -1,0 +1,56 @@
+name: Guard and merge repository facts
+
+on:
+  push:
+    branches:
+      - 'automation/repository-facts-*'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run validate
+      - run: npm run compile
+      - name: Require committed compiled output
+        run: git diff --exit-code -- dist
+      - name: Prove the branch changes allowlisted facts only
+        run: node scripts/verify-automatic-diff.mjs --base origin/main --head HEAD
+
+  merge:
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 0
+      - name: Open guarded PR, merge, and request publication
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          branch="${GITHUB_REF_NAME}"
+          before="$(git rev-parse origin/main)"
+          verification="$(node scripts/verify-automatic-diff.mjs --base origin/main --head HEAD)"
+          pr="$(gh pr list --head "$branch" --state open --json number --jq '.[0].number // empty')"
+          if [ -z "$pr" ]; then
+            body="$(printf 'Deterministic repository metadata update.\n\nSource commit: `%s`\n\nGuard result:\n```json\n%s\n```\n\nNarrative, evidence, ownership, and publication fields are excluded by the automatic-diff guard.' "$(git log -1 --pretty=%s)" "$verification")"
+            pr="$(gh pr create --base main --head "$branch" --title "chore: sync allowlisted repository facts" --body "$body" | sed 's#.*/##')"
+          fi
+          gh pr merge "$pr" --squash --delete-branch
+          after="$(gh pr view "$pr" --json mergeCommit --jq '.mergeCommit.oid')"
+          gh api "repos/$GITHUB_REPOSITORY/dispatches" \
+            -f event_type=portfolio-published \
+            -f "client_payload[before]=$before" \
+            -f "client_payload[after]=$after"

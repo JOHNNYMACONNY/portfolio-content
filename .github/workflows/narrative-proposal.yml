@@ -1,0 +1,86 @@
+name: Draft evidence-backed narrative proposal
+
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: Public source repository in owner/name form
+        required: true
+        default: JOHNNYMACONNY/mighty-mouse
+      project_slug:
+        description: Portfolio project slug
+        required: true
+        default: mighty-mouse
+      base_sha:
+        description: Full base commit SHA
+        required: true
+      head_sha:
+        description: Full head commit SHA
+        required: true
+  repository_dispatch:
+    types: [narrative-evidence-ready]
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Resolve bounded source request
+        id: source
+        env:
+          INPUT_REPOSITORY: ${{ inputs.repository || github.event.client_payload.repository }}
+          INPUT_PROJECT: ${{ inputs.project_slug || github.event.client_payload.project_slug }}
+          INPUT_BASE: ${{ inputs.base_sha || github.event.client_payload.base_sha }}
+          INPUT_HEAD: ${{ inputs.head_sha || github.event.client_payload.head_sha }}
+        run: |
+          printf 'repository=%s\nproject=%s\nbase=%s\nhead=%s\n' "$INPUT_REPOSITORY" "$INPUT_PROJECT" "$INPUT_BASE" "$INPUT_HEAD" >> "$GITHUB_OUTPUT"
+      - name: Build sanitized evidence packet
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/build-evidence-packet.mjs \
+            --repository "${{ steps.source.outputs.repository }}" \
+            --project "${{ steps.source.outputs.project }}" \
+            --base "${{ steps.source.outputs.base }}" \
+            --head "${{ steps.source.outputs.head }}" \
+            --output /tmp/evidence-packet.json
+      - name: Run optional provider-neutral agent
+        id: agent
+        env:
+          PORTFOLIO_NARRATIVE_AGENT_COMMAND_JSON: ${{ vars.PORTFOLIO_NARRATIVE_AGENT_COMMAND_JSON }}
+          NARRATIVE_AGENT_API_KEY: ${{ secrets.NARRATIVE_AGENT_API_KEY }}
+        run: node scripts/run-narrative-agent.mjs --evidence /tmp/evidence-packet.json --output /tmp/narrative-proposal.json
+      - name: Create review-only draft PR
+        if: steps.agent.outputs.status == 'proposed'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          slug="${{ steps.source.outputs.project }}"
+          head="${{ steps.source.outputs.head }}"
+          branch="proposal/${slug}/${head:0:12}-${GITHUB_RUN_ID}"
+          mkdir -p "evidence-packets/$slug" "proposals/$slug"
+          cp /tmp/evidence-packet.json "evidence-packets/$slug/$head.json"
+          cp /tmp/narrative-proposal.json "proposals/$slug/$head.json"
+          npm run validate:proposals
+          git config user.name 'portfolio-narrative[bot]'
+          git config user.email 'portfolio-narrative[bot]@users.noreply.github.com'
+          git checkout -b "$branch"
+          git add "evidence-packets/$slug/$head.json" "proposals/$slug/$head.json"
+          git commit -m "docs: propose evidence-backed narrative update for $slug"
+          git push origin "$branch"
+          fields="$(jq -r '[.changes[].field] | join(", ")' /tmp/narrative-proposal.json)"
+          confidence="$(jq -r '.confidence' /tmp/narrative-proposal.json)"
+          questions="$(jq -r '.unresolvedQuestions[]? | "- " + .' /tmp/narrative-proposal.json)"
+          body="$(printf 'Review-only narrative proposal. Merging this PR stores the proposal; it does not publish the proposed copy.\n\nSource: `%s`\nRange: `%s...%s`\nFields proposed: %s\nConfidence: %s\nPrivacy scan: passed\n\nUnresolved questions:\n%s\n\nCurrent rendered case study: https://www.ybfstudio.com/work/%s\n\nA human must apply accepted wording in a separate content PR.' "${{ steps.source.outputs.repository }}" "${{ steps.source.outputs.base }}" "$head" "$fields" "$confidence" "$questions" "$slug")"
+          gh pr create --draft --base main --head "$branch" --title "docs: review narrative proposal for $slug" --body "$body"
+          gh workflow run validate.yml --ref "$branch"

@@ -18,6 +18,22 @@
   ],
   "accent": "signal",
   "ownership": "Original evaluation harness, benchmark workflow, protocol experiments, verification gates, and CLI. Model runtimes and foundation models are third-party systems.",
+  "sourceRepositories": [
+    "JOHNNYMACONNY/mighty-mouse"
+  ],
+  "repositoryMetadataPolicy": {
+    "automaticFields": [
+      "repositoryMetadata.archived",
+      "repositoryMetadata.homepageUrl",
+      "repositoryMetadata.latestRelease",
+      "repositoryMetadata.primaryLanguage",
+      "repositoryMetadata.pushedAt",
+      "repositoryMetadata.repository",
+      "repositoryMetadata.topics",
+      "repositoryMetadata.url"
+    ],
+    "approvedTopics": []
+  },
   "evidence": [
     {
       "label": "Paired validation",

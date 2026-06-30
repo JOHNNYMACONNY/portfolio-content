@@ -11,6 +11,8 @@ on:
       - 'package.json'
       - 'package-lock.json'
   workflow_dispatch:
+  repository_dispatch:
+    types: [portfolio-published]
 
 permissions:
   contents: read
@@ -19,6 +21,7 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with:
@@ -35,7 +38,7 @@ jobs:
         run: git diff --exit-code -- dist
       - name: Detect affected content
         id: affected
-        run: node scripts/detect-affected-routes.mjs --before "${{ github.event.before || github.event.repository.default_branch }}" --after "${{ github.sha }}"
+        run: node scripts/detect-affected-routes.mjs --before "${{ github.event.client_payload.before || github.event.before || github.event.repository.default_branch }}" --after "${{ github.event.client_payload.after || github.sha }}"
       - name: Revalidate and verify live site
         env:
           PORTFOLIO_SITE_URL: ${{ secrets.PORTFOLIO_SITE_URL }}

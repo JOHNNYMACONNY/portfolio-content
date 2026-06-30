@@ -63,7 +63,31 @@
         "sourceRepositories": { "type": "array", "items": { "type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$" } },
         "lastVerifiedAt": { "type": "string", "format": "date-time" },
         "visibility": { "enum": ["published", "hidden"] },
-        "repositoryMetadataPolicy": { "type": "object" },
+        "repositoryMetadataPolicy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["automaticFields", "approvedTopics"],
+          "properties": {
+            "automaticFields": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "repositoryMetadata.archived",
+                  "repositoryMetadata.homepageUrl",
+                  "repositoryMetadata.latestRelease",
+                  "repositoryMetadata.primaryLanguage",
+                  "repositoryMetadata.pushedAt",
+                  "repositoryMetadata.repository",
+                  "repositoryMetadata.topics",
+                  "repositoryMetadata.url"
+                ]
+              }
+            },
+            "approvedTopics": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/text" } }
+          }
+        },
+        "repositoryMetadata": { "$ref": "#/$defs/repositoryMetadata" },
         "evidence": {
           "type": "array",
           "minItems": 1,
@@ -129,6 +153,35 @@
         "eyebrow": { "$ref": "#/$defs/text" },
         "title": { "$ref": "#/$defs/text" },
         "body": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/text" } }
+      }
+    },
+    "repositoryMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "url", "archived", "topics", "pushedAt"],
+      "properties": {
+        "repository": { "type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$" },
+        "url": { "type": "string", "format": "uri" },
+        "homepageUrl": { "type": "string", "format": "uri" },
+        "latestRelease": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["tag", "publishedAt", "url"],
+              "properties": {
+                "tag": { "$ref": "#/$defs/text" },
+                "publishedAt": { "type": "string", "format": "date-time" },
+                "url": { "type": "string", "format": "uri" }
+              }
+            }
+          ]
+        },
+        "primaryLanguage": { "$ref": "#/$defs/text" },
+        "topics": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/text" } },
+        "archived": { "type": "boolean" },
+        "pushedAt": { "type": "string", "format": "date-time" }
       }
     },
     "supporting": {

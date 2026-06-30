@@ -7,6 +7,12 @@
     "compile": "node scripts/compile-manifest.mjs",
     "validate": "node scripts/validate-content.mjs",
     "affected": "node scripts/detect-affected-routes.mjs",
+    "sync:repository": "node scripts/sync-repository-facts.mjs",
+    "verify:automatic": "node scripts/verify-automatic-diff.mjs",
+    "evidence:build": "node scripts/build-evidence-packet.mjs",
+    "proposal:run": "node scripts/run-narrative-agent.mjs",
+    "proposal:validate": "node scripts/validate-narrative-proposal.mjs",
+    "validate:proposals": "node scripts/validate-proposal-artifacts.mjs",
     "test": "node --test tests/*.test.mjs"
   },
   "devDependencies": {
