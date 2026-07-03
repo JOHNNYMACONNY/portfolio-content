@@ -1,23 +1,26 @@
 {
   "slug": "mighty-mouse",
   "title": "Mighty Mouse",
-  "shortOutcome": "An evaluation-driven harness for finding faster, more reliable ways to run small local coding models.",
+  "shortOutcome": "A provider-agnostic reliability harness that gives AI coding agents structured protocols and project-native verification.",
   "kind": "ai",
-  "discipline": "Agent evaluation / local AI systems",
+  "discipline": "AI workflow reliability / developer tooling",
   "status": "active",
   "year": 2026,
-  "role": "Creator, researcher, and systems engineer",
+  "role": "Creator, systems engineer, and evaluation designer",
   "featured": true,
   "homepage": true,
   "tags": [
     "Python",
-    "Evaluation",
-    "Local models",
+    "Agent reliability",
+    "MCP",
+    "Verification",
     "CLI",
-    "Autoresearch"
+    "Evaluation"
   ],
   "accent": "signal",
-  "ownership": "Original evaluation harness, benchmark workflow, protocol experiments, verification gates, and CLI. Model runtimes and foundation models are third-party systems.",
+  "ownership": "Original reliability harness, versioned protocols, project verifier, evaluation design, packaging, CLI, MCP transport, platform rules, CI, and study execution. Foundation models, model runtimes, MCP itself, and agent platforms are third-party systems.",
+  "contentVersion": "2026-07-03.2",
+  "lastVerifiedAt": "2026-07-03T18:25:37.000Z",
   "sourceRepositories": [
     "JOHNNYMACONNY/mighty-mouse"
   ],
@@ -37,18 +40,75 @@
   "evidence": [
     {
       "basis": {
-        "studyClass": "promotion-benchmark",
-        "sampleSize": 15,
+        "studyClass": "prospective-paired-study",
+        "sampleSize": 10,
         "sampleUnit": "paired-task",
-        "conditionRunCount": 30,
-        "sourcePath": "eval/results/PROMOTION_NOTES.md",
-        "sourceCommit": "25fdc5f3a7745c0c12ba79f06b3c8a326455c57e",
-        "generalizationBoundary": "Recorded promotion benchmark suite, configuration, and environment only; current real-project validation is still collecting."
+        "conditionRunCount": 20,
+        "sourcePath": "data/evidence/real_project_report.md",
+        "sourceCommit": "91f37272a49d0d05f4eee35228a1339d44594c70",
+        "generalizationBoundary": "Ten paired tasks from the recorded projects, agent, models, and environment only; no generalized reliability or speed improvement was demonstrated."
       },
-      "label": "Paired validation",
-      "value": "15 paired tasks / 30 condition runs",
-      "detail": "15 paired tasks produced 30 condition runs across the promotion suite.",
-      "provenance": "eval/results/PROMOTION_NOTES.md — Phase 36 validation"
+      "label": "First-attempt passes",
+      "value": "6/10 vs 6/10",
+      "detail": "Mighty Mouse and the control each passed six of ten paired real-project tasks on the first attempt, with zero scope violations in both conditions.",
+      "provenance": "data/evidence/real_project_report.md — completed prospective study",
+      "sourceUrl": "https://github.com/JOHNNYMACONNY/mighty-mouse/blob/91f37272a49d0d05f4eee35228a1339d44594c70/data/evidence/real_project_report.md",
+      "verifiedAt": "2026-07-03T18:25:37.000Z",
+      "limitation": "The study did not demonstrate better generalized first-pass reliability."
+    },
+    {
+      "basis": {
+        "studyClass": "prospective-paired-study",
+        "sampleSize": 10,
+        "sampleUnit": "paired-task",
+        "conditionRunCount": 20,
+        "sourcePath": "data/evidence/real_project_report.md",
+        "sourceCommit": "91f37272a49d0d05f4eee35228a1339d44594c70",
+        "generalizationBoundary": "Ten paired tasks from the recorded projects, agent, models, and environment only; no generalized reliability or speed improvement was demonstrated."
+      },
+      "label": "Retry rounds",
+      "value": "4 vs 6",
+      "detail": "Mighty Mouse used four retry rounds across the sample; the control used six.",
+      "provenance": "data/evidence/real_project_report.md — completed prospective study",
+      "sourceUrl": "https://github.com/JOHNNYMACONNY/mighty-mouse/blob/91f37272a49d0d05f4eee35228a1339d44594c70/data/evidence/real_project_report.md",
+      "verifiedAt": "2026-07-03T18:25:37.000Z",
+      "limitation": "Two fewer retries in this sample is not evidence of a universal improvement."
+    },
+    {
+      "basis": {
+        "studyClass": "prospective-paired-study",
+        "sampleSize": 10,
+        "sampleUnit": "paired-task",
+        "conditionRunCount": 20,
+        "sourcePath": "data/evidence/real_project_report.md",
+        "sourceCommit": "91f37272a49d0d05f4eee35228a1339d44594c70",
+        "generalizationBoundary": "Ten paired tasks from the recorded projects, agent, models, and environment only; no generalized reliability or speed improvement was demonstrated."
+      },
+      "label": "Mean blind-review quality",
+      "value": "4.60 vs 4.30",
+      "detail": "Mighty Mouse received a 4.60 mean blind-review score versus 4.30 for the control across the ten paired tasks.",
+      "provenance": "data/evidence/real_project_report.md — completed prospective study",
+      "sourceUrl": "https://github.com/JOHNNYMACONNY/mighty-mouse/blob/91f37272a49d0d05f4eee35228a1339d44594c70/data/evidence/real_project_report.md",
+      "verifiedAt": "2026-07-03T18:25:37.000Z",
+      "limitation": "The quality difference belongs to this sample and its recorded blind-review procedure."
+    },
+    {
+      "basis": {
+        "studyClass": "prospective-paired-study",
+        "sampleSize": 10,
+        "sampleUnit": "paired-task",
+        "conditionRunCount": 20,
+        "sourcePath": "data/evidence/real_project_report.md",
+        "sourceCommit": "91f37272a49d0d05f4eee35228a1339d44594c70",
+        "generalizationBoundary": "Ten paired tasks from the recorded projects, agent, models, and environment only; no generalized reliability or speed improvement was demonstrated."
+      },
+      "label": "Median duration",
+      "value": "262.5s vs 229.5s",
+      "detail": "Mighty Mouse was slower: 262.5 seconds median duration versus 229.5 seconds for the control; raw mean duration was also slower.",
+      "provenance": "data/evidence/real_project_report.md — completed prospective study",
+      "sourceUrl": "https://github.com/JOHNNYMACONNY/mighty-mouse/blob/91f37272a49d0d05f4eee35228a1339d44594c70/data/evidence/real_project_report.md",
+      "verifiedAt": "2026-07-03T18:25:37.000Z",
+      "limitation": "The study did not demonstrate a generalized speed improvement."
     },
     {
       "basis": {
@@ -56,164 +116,163 @@
         "sampleSize": 15,
         "sampleUnit": "paired-task",
         "conditionRunCount": 30,
-        "sourcePath": "eval/results/PROMOTION_NOTES.md",
-        "sourceCommit": "25fdc5f3a7745c0c12ba79f06b3c8a326455c57e",
-        "generalizationBoundary": "Recorded promotion benchmark suite, configuration, and environment only; current real-project validation is still collecting."
+        "sourcePath": "data/evidence/results/PROMOTION_NOTES.md",
+        "sourceCommit": "91f37272a49d0d05f4eee35228a1339d44594c70",
+        "generalizationBoundary": "Historical synthetic promotion suite and recorded environment only; the later prospective real-project study did not reproduce a generalized speed or first-pass reliability improvement."
       },
-      "label": "Verified reliability",
-      "value": "100% / 100%",
-      "detail": "Both conditions passed every verification gate across 15 paired tasks producing 30 condition runs.",
-      "provenance": "eval/results/PROMOTION_NOTES.md — Phase 36 validation",
-      "limitation": "This result applies to the recorded benchmark suite, configuration, and environment—not every model or coding task."
-    },
-    {
-      "basis": {
-        "studyClass": "promotion-benchmark",
-        "sampleSize": 15,
-        "sampleUnit": "paired-task",
-        "conditionRunCount": 30,
-        "sourcePath": "eval/results/PROMOTION_NOTES.md",
-        "sourceCommit": "25fdc5f3a7745c0c12ba79f06b3c8a326455c57e",
-        "generalizationBoundary": "Recorded promotion benchmark suite, configuration, and environment only; current real-project validation is still collecting."
-      },
-      "label": "Average speedup",
+      "label": "Historical synthetic latency result",
       "value": "29.5%",
-      "detail": "Average latency improvement for Lean versus baseline across 15 paired tasks producing 30 condition runs.",
-      "provenance": "eval/results/PROMOTION_NOTES.md — Phase 36 validation"
-    },
-    {
-      "basis": {
-        "studyClass": "exploratory-mini-spike",
-        "sampleSize": 3,
-        "sampleUnit": "task",
-        "sourcePath": "eval/results/spike_summary.md",
-        "sourceCommit": "25fdc5f3a7745c0c12ba79f06b3c8a326455c57e",
-        "generalizationBoundary": "Separate three-task exploratory mini-spike only; it is not promotion evidence or evidence of general performance."
-      },
-      "label": "Separate mini-spike",
-      "value": "~45%",
-      "detail": "Average execution-time reduction across three fixed-environment tasks in an earlier, smaller spike.",
-      "provenance": "eval/results/spike_summary.md — clean Trial 3",
-      "limitation": "A three-task exploratory result reported separately from the 15-paired-task, 30-condition-run promotion validation."
+      "detail": "Lean reduced average latency by 29.5% while both conditions passed 15 of 15 tasks in the historical synthetic promotion suite.",
+      "provenance": "data/evidence/results/PROMOTION_NOTES.md — historical promotion validation",
+      "sourceUrl": "https://github.com/JOHNNYMACONNY/mighty-mouse/blob/91f37272a49d0d05f4eee35228a1339d44594c70/data/evidence/results/PROMOTION_NOTES.md",
+      "verifiedAt": "2026-07-03T18:25:37.000Z",
+      "limitation": "This historical synthetic result is bounded to that suite and must not be generalized to real project work."
     }
   ],
-  "links": [],
+  "links": [
+    {
+      "label": "Source repository",
+      "href": "https://github.com/JOHNNYMACONNY/mighty-mouse",
+      "kind": "source"
+    },
+    {
+      "label": "v0.2.1 release",
+      "href": "https://github.com/JOHNNYMACONNY/mighty-mouse/releases/tag/v0.2.1",
+      "kind": "release"
+    },
+    {
+      "label": "Real-project study report",
+      "href": "https://github.com/JOHNNYMACONNY/mighty-mouse/blob/91f37272a49d0d05f4eee35228a1339d44594c70/data/evidence/real_project_report.md",
+      "kind": "evidence"
+    },
+    {
+      "label": "Platform MCP smoke report",
+      "href": "https://github.com/JOHNNYMACONNY/mighty-mouse/blob/91f37272a49d0d05f4eee35228a1339d44594c70/data/evidence/platform_smoke_report.md",
+      "kind": "evidence"
+    }
+  ],
   "media": [],
   "narrative": {
     "problem": {
-      "title": "Small models can be capable and still fail the workflow.",
+      "title": "Agent output is not proof that a coding task is complete.",
       "body": [
-        "Local coding models are attractive because they are private, inexpensive, and available without a network dependency. The hard part is not getting one impressive answer; it is producing useful changes repeatedly under real file, format, scope, and verification constraints.",
-        "Mighty Mouse turns prompt and harness decisions into controlled experiments. The same tasks run through competing configurations, and promotion depends on verified outcomes rather than subjective output quality."
+        "Coding agents can produce plausible explanations and still miss required files, violate scope, or stop before the project’s own checks pass. The operational problem is turning a model response into a bounded, inspectable result another person can trust.",
+        "Mighty Mouse supplies versioned complexity protocols, project-native verification, structured results, and a bounded retry contract. The model and agent platform remain replaceable; the reliability layer stays explicit."
       ]
     },
     "ownership": {
-      "title": "The harness is the product; the models are replaceable inputs.",
+      "title": "I built the reliability layer, not the models or agent platforms.",
       "body": [
-        "I designed and built the orchestration, task fixtures, response parsing, benchmark runners, telemetry, promotion gates, safety checks, and command-line interface.",
-        "The system runs third-party local model runtimes and foundation models. I am not claiming authorship of those models; the work is in making their behavior measurable, configurable, and operationally useful."
+        "I designed and built the harness, versioned protocols, project verifier, result schema, CLI, MCP transport, packaging, platform rules, CI, evaluation fixtures, and prospective study.",
+        "Foundation models, model runtimes, MCP itself, and platforms such as Codex and Antigravity are third-party systems. Mighty Mouse integrates with them; it does not claim their underlying work."
       ]
     },
     "systemMap": [
       {
-        "label": "Task fixture",
-        "detail": "A scoped coding problem with expected files and assertions.",
+        "label": "Task + complexity input",
+        "detail": "A coding task enters with an explicit complexity level or a deterministic default.",
         "stage": "input"
       },
       {
-        "label": "Candidate config",
-        "detail": "Model, protocol, prompt format, limits, and tool policy.",
-        "stage": "input"
+        "label": "Protocol selection",
+        "detail": "The harness returns a versioned low, medium, or high-complexity execution contract.",
+        "stage": "decision"
       },
       {
-        "label": "Isolated workspace",
-        "detail": "Each run receives controlled files and hidden evaluator state.",
+        "label": "Agent execution",
+        "detail": "The chosen agent works inside declared scope using the project’s existing tools and conventions.",
         "stage": "state"
       },
       {
-        "label": "Runner + parser",
-        "detail": "Executes the candidate and converts output into a deterministic change.",
+        "label": "Project-native verification",
+        "detail": "Tests, lint, build, scope, and changed-file checks run as structured verification steps.",
         "stage": "decision"
       },
       {
-        "label": "Verification gate",
-        "detail": "Tests, schema, scope, and mandatory-format checks decide success.",
+        "label": "Bounded retry loop",
+        "detail": "Failures return actionable suggestions; the agent may retry without entering an unbounded correction cycle.",
         "stage": "decision"
       },
       {
-        "label": "Promotion record",
-        "detail": "Latency, tokens, pass rate, and regressions become an auditable decision.",
+        "label": "Structured result",
+        "detail": "Pass state, checks, warnings, and suggestions are returned in a stable human- and machine-readable form.",
         "stage": "output"
       },
       {
-        "label": "Abort / quarantine",
-        "detail": "Parser errors, unsafe scope, or failed tests stop promotion.",
+        "label": "Stop condition",
+        "detail": "A passing result completes the task; exhausted retries or unresolved scope failures stop and escalate.",
         "stage": "failure"
       }
     ],
     "decisions": [
       {
-        "title": "Verification outranks eloquence",
-        "decision": "Score changed files and executable checks instead of grading the model’s explanation.",
-        "consequence": "Configurations can be compared on the result that matters: whether the task was completed safely and correctly."
+        "title": "Use the project’s checks as the authority",
+        "decision": "Return executable test, lint, build, and scope results instead of treating the agent’s explanation as completion evidence.",
+        "consequence": "A persuasive response cannot hide a failing project state."
       },
       {
-        "title": "Remove reasoning when evidence permits",
-        "decision": "The Lean Protocol skips expensive planning behavior for task classes where verification proves it unnecessary.",
-        "consequence": "The promoted configuration improved average latency without reducing the recorded pass rate."
+        "title": "Keep retries bounded",
+        "decision": "Pair structured failure suggestions with an explicit retry ceiling rather than allowing open-ended self-correction.",
+        "consequence": "The workflow has a visible escalation point and a measurable retry cost."
       },
       {
-        "title": "Treat parser failures as system failures",
-        "decision": "Output contracts, hidden state, fallbacks, and telemetry became first-class harness concerns.",
-        "consequence": "A model response is not called successful unless it can survive the path from text to verified change."
+        "title": "Publish the mixed result",
+        "decision": "Retain the tied first-pass rate and slower durations beside the favorable retry and blind-review results.",
+        "consequence": "The case study demonstrates evaluation discipline without claiming a generalized improvement the study did not show."
       }
     ],
     "buildRecord": [
       {
-        "label": "01 / CONTROL",
-        "title": "Reproducible task suite",
-        "detail": "Baseline and candidate configurations execute the same versioned tasks in isolated workspaces."
+        "label": "01 / INTERFACE",
+        "title": "Core CLI",
+        "detail": "Protocol and verify commands expose stable JSON interfaces alongside doctor, demo, and benchmark operations."
       },
       {
-        "label": "02 / OBSERVE",
-        "title": "Per-run telemetry",
-        "detail": "Latency, token use, parser state, changed files, assertions, and failure categories are captured."
+        "label": "02 / TRANSPORT",
+        "title": "MCP server",
+        "detail": "A separate package exposes protocol and verification tools over stdio for compatible agent platforms."
       },
       {
-        "label": "03 / DECIDE",
-        "title": "Promotion protocol",
-        "detail": "Candidates must retain reliability, pass replay gates, and clear safety checks before becoming defaults."
+        "label": "03 / DISTRIBUTE",
+        "title": "Installable packages",
+        "detail": "Core and MCP wheels and source distributions are built, archive-inspected, checksummed, and smoke-tested outside the checkout."
       },
       {
-        "label": "04 / OPERATE",
-        "title": "CLI and diagnostics",
-        "detail": "A compact command surface runs doctor checks, demos, benchmarks, and result inspection."
+        "label": "04 / VERIFY",
+        "title": "CI and paired evaluation",
+        "detail": "Python 3.10–3.13 CI, packaging gates, frozen trial manifests, and blind reviews keep implementation and claims auditable."
       }
     ],
     "failures": [
       {
-        "title": "Decomposition produced parser-contract failures",
-        "observed": "An early decomposition strategy returned output the harness could not apply, producing zero-second parser failures.",
-        "response": "Standardized stdout, isolated hidden state, added metadata fallbacks, and captured per-pass telemetry before reevaluation.",
+        "title": "The synthetic suite hit a ceiling",
+        "observed": "Mighty Mouse, the historical protocol conditions, and a bare control all passed the frozen synthetic tasks, limiting what the suite could prove about reliability.",
+        "response": "Bound the 29.5% latency result to its recorded environment and ran a prospective paired study on real project tasks.",
         "status": "resolved"
       },
       {
-        "title": "One network task regressed under Lean",
-        "observed": "The validation watchlist recorded a 37.6% latency regression for task_005 even though the task passed.",
-        "response": "Kept the result visible as a monitoring item rather than averaging it away.",
+        "title": "The real-project result was mixed",
+        "observed": "First-attempt passes tied at 6/10, and Mighty Mouse was slower by both mean and median duration despite fewer retries and higher mean blind-review quality.",
+        "response": "Published the unfavorable timing and tied reliability results and stated that no generalized improvement was demonstrated.",
         "status": "monitoring"
       },
       {
-        "title": "Broader local-model claims remain unproven",
-        "observed": "Current evidence is tied to the benchmark suite and tested configurations.",
-        "response": "Expand model and task diversity before claiming general performance improvements.",
-        "status": "open"
+        "title": "macOS metadata contaminated package inputs",
+        "observed": "AppleDouble resource-fork files created noisy Git and archive failures on the external volume.",
+        "response": "Added package-data exclusions, source-distribution filtering, archive inspection, and explicit regression tests.",
+        "status": "resolved"
+      },
+      {
+        "title": "Editable installs and Python 3.10 exposed packaging gaps",
+        "observed": "Custom build-backend behavior and older-Python compatibility failed outside the original development environment.",
+        "response": "Completed editable-build hooks, added compatibility dependencies, and required clean Python 3.10–3.13 CI plus artifact-only installation smokes.",
+        "status": "resolved"
       }
     ],
     "currentStatus": {
-      "title": "Active research system with a usable operator surface.",
+      "title": "Released reliability tooling with bounded evidence.",
       "body": [
-        "The evaluation harness, Lean promotion record, diagnostics, benchmark runners, and CLI are working. Research continues around model diversity, decomposition, autoresearch, and identifying configurations that generalize beyond a single suite."
+        "Version 0.2.1 ships the core library, CLI, MCP transport, platform rules, verifier, CI matrix, release artifacts, and the completed ten-pair study. The current evidence supports fewer retries and higher mean blind-review quality in this sample, not a generalized first-pass reliability or speed improvement."
       ]
     }
   },

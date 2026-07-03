@@ -19,6 +19,7 @@ test('duplicate slug is rejected', () => {
 test('numeric evidence without provenance is rejected', () => {
   const document = clone(validDocument);
   delete document.projects[0].evidence[0].provenance;
+  delete document.projects[0].evidence[0].sourceUrl;
   assert.match(validateDocumentRules(document).join('\n'), /provenance/i);
 });
 
