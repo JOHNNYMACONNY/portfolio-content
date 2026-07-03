@@ -1,5 +1,5 @@
 {
-  "contentVersion": "2026-06-30.1",
+  "contentVersion": "2026-07-03.1",
   "flagshipOrder": [
     "mighty-mouse",
     "life-ops",
@@ -16,28 +16,63 @@
       "discipline": "Agent evaluation / local AI systems",
       "evidence": [
         {
-          "detail": "15 baseline and 15 Lean Protocol runs across the promotion suite.",
+          "basis": {
+            "conditionRunCount": 30,
+            "generalizationBoundary": "Recorded promotion benchmark suite, configuration, and environment only; current real-project validation is still collecting.",
+            "sampleSize": 15,
+            "sampleUnit": "paired-task",
+            "sourceCommit": "25fdc5f3a7745c0c12ba79f06b3c8a326455c57e",
+            "sourcePath": "eval/results/PROMOTION_NOTES.md",
+            "studyClass": "promotion-benchmark"
+          },
+          "detail": "15 paired tasks produced 30 condition runs across the promotion suite.",
           "label": "Paired validation",
           "provenance": "eval/results/PROMOTION_NOTES.md — Phase 36 validation",
-          "value": "30 trials"
+          "value": "15 paired tasks / 30 condition runs"
         },
         {
-          "detail": "Both cohorts passed every verification gate in the 30-trial validation.",
+          "basis": {
+            "conditionRunCount": 30,
+            "generalizationBoundary": "Recorded promotion benchmark suite, configuration, and environment only; current real-project validation is still collecting.",
+            "sampleSize": 15,
+            "sampleUnit": "paired-task",
+            "sourceCommit": "25fdc5f3a7745c0c12ba79f06b3c8a326455c57e",
+            "sourcePath": "eval/results/PROMOTION_NOTES.md",
+            "studyClass": "promotion-benchmark"
+          },
+          "detail": "Both conditions passed every verification gate across 15 paired tasks producing 30 condition runs.",
           "label": "Verified reliability",
           "limitation": "This result applies to the recorded benchmark suite, configuration, and environment—not every model or coding task.",
           "provenance": "eval/results/PROMOTION_NOTES.md — Phase 36 validation",
           "value": "100% / 100%"
         },
         {
-          "detail": "Average latency improvement for Lean versus baseline across the paired validation.",
+          "basis": {
+            "conditionRunCount": 30,
+            "generalizationBoundary": "Recorded promotion benchmark suite, configuration, and environment only; current real-project validation is still collecting.",
+            "sampleSize": 15,
+            "sampleUnit": "paired-task",
+            "sourceCommit": "25fdc5f3a7745c0c12ba79f06b3c8a326455c57e",
+            "sourcePath": "eval/results/PROMOTION_NOTES.md",
+            "studyClass": "promotion-benchmark"
+          },
+          "detail": "Average latency improvement for Lean versus baseline across 15 paired tasks producing 30 condition runs.",
           "label": "Average speedup",
           "provenance": "eval/results/PROMOTION_NOTES.md — Phase 36 validation",
           "value": "29.5%"
         },
         {
+          "basis": {
+            "generalizationBoundary": "Separate three-task exploratory mini-spike only; it is not promotion evidence or evidence of general performance.",
+            "sampleSize": 3,
+            "sampleUnit": "task",
+            "sourceCommit": "25fdc5f3a7745c0c12ba79f06b3c8a326455c57e",
+            "sourcePath": "eval/results/spike_summary.md",
+            "studyClass": "exploratory-mini-spike"
+          },
           "detail": "Average execution-time reduction across three fixed-environment tasks in an earlier, smaller spike.",
           "label": "Separate mini-spike",
-          "limitation": "A three-task exploratory result reported separately from the 30-trial promotion validation.",
+          "limitation": "A three-task exploratory result reported separately from the 15-paired-task, 30-condition-run promotion validation.",
           "provenance": "eval/results/spike_summary.md — clean Trial 3",
           "value": "~45%"
         }
@@ -232,7 +267,20 @@
       "homepage": true,
       "kind": "operations",
       "links": [],
-      "media": [],
+      "media": [
+        {
+          "alt": "Sanitized diagram of six LifeOps conversation lanes passing through authority and routing checks into durable updates or human review",
+          "kind": "image",
+          "label": "Six focused lanes share one governed routing layer and a four-step write-safety policy.",
+          "src": "https://www.ybfstudio.com/work/life-ops/routing-system.svg"
+        },
+        {
+          "alt": "Sanitized four-stage walkthrough from conversational request to scoped action, verified execution, and durable record",
+          "kind": "image",
+          "label": "A real operating pattern shown with synthetic content: request, scope, execute, verify, and record.",
+          "src": "https://www.ybfstudio.com/work/life-ops/automation-walkthrough.svg"
+        }
+      ],
       "narrative": {
         "buildRecord": [
           {
@@ -396,9 +444,27 @@
           "href": "https://www.larecordingstudiofinder.com",
           "kind": "live",
           "label": "Open live directory"
+        },
+        {
+          "href": "https://github.com/JOHNNYMACONNY/la-studio-finder",
+          "kind": "source",
+          "label": "Inspect source repository"
         }
       ],
-      "media": [],
+      "media": [
+        {
+          "alt": "LA Studio Finder directory showing neighborhood controls, service and verification filters, sorting, and studio cards",
+          "kind": "image",
+          "label": "The live directory combines quick paths, neighborhood controls, structured filters, verification state, and comparable cards.",
+          "src": "https://www.ybfstudio.com/work/la-studio-finder/directory-filters.png"
+        },
+        {
+          "alt": "LA Studio Finder detail page for Beach House Studios with navigation and a large studio photograph",
+          "kind": "image",
+          "label": "A production studio-detail route carries real imagery and decision context into an individual listing.",
+          "src": "https://www.ybfstudio.com/work/la-studio-finder/studio-detail.png"
+        }
+      ],
       "narrative": {
         "buildRecord": [
           {
@@ -516,6 +582,9 @@
       "role": "Product designer, developer, researcher, and operator",
       "shortOutcome": "A production directory that turns a fragmented studio search into a location-aware, comparable decision.",
       "slug": "la-studio-finder",
+      "sourceRepositories": [
+        "JOHNNYMACONNY/la-studio-finder"
+      ],
       "status": "shipped",
       "tags": [
         "Next.js",
@@ -528,7 +597,7 @@
       "year": 2026
     }
   ],
-  "publishedAt": "2026-06-30T00:00:00.000Z",
+  "publishedAt": "2026-07-03T18:01:37.000Z",
   "redirects": [],
   "schemaVersion": 1,
   "supportingWork": [

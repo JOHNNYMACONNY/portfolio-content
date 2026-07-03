@@ -36,30 +36,65 @@
   },
   "evidence": [
     {
+      "basis": {
+        "studyClass": "promotion-benchmark",
+        "sampleSize": 15,
+        "sampleUnit": "paired-task",
+        "conditionRunCount": 30,
+        "sourcePath": "eval/results/PROMOTION_NOTES.md",
+        "sourceCommit": "25fdc5f3a7745c0c12ba79f06b3c8a326455c57e",
+        "generalizationBoundary": "Recorded promotion benchmark suite, configuration, and environment only; current real-project validation is still collecting."
+      },
       "label": "Paired validation",
-      "value": "30 trials",
-      "detail": "15 baseline and 15 Lean Protocol runs across the promotion suite.",
+      "value": "15 paired tasks / 30 condition runs",
+      "detail": "15 paired tasks produced 30 condition runs across the promotion suite.",
       "provenance": "eval/results/PROMOTION_NOTES.md — Phase 36 validation"
     },
     {
+      "basis": {
+        "studyClass": "promotion-benchmark",
+        "sampleSize": 15,
+        "sampleUnit": "paired-task",
+        "conditionRunCount": 30,
+        "sourcePath": "eval/results/PROMOTION_NOTES.md",
+        "sourceCommit": "25fdc5f3a7745c0c12ba79f06b3c8a326455c57e",
+        "generalizationBoundary": "Recorded promotion benchmark suite, configuration, and environment only; current real-project validation is still collecting."
+      },
       "label": "Verified reliability",
       "value": "100% / 100%",
-      "detail": "Both cohorts passed every verification gate in the 30-trial validation.",
+      "detail": "Both conditions passed every verification gate across 15 paired tasks producing 30 condition runs.",
       "provenance": "eval/results/PROMOTION_NOTES.md — Phase 36 validation",
       "limitation": "This result applies to the recorded benchmark suite, configuration, and environment—not every model or coding task."
     },
     {
+      "basis": {
+        "studyClass": "promotion-benchmark",
+        "sampleSize": 15,
+        "sampleUnit": "paired-task",
+        "conditionRunCount": 30,
+        "sourcePath": "eval/results/PROMOTION_NOTES.md",
+        "sourceCommit": "25fdc5f3a7745c0c12ba79f06b3c8a326455c57e",
+        "generalizationBoundary": "Recorded promotion benchmark suite, configuration, and environment only; current real-project validation is still collecting."
+      },
       "label": "Average speedup",
       "value": "29.5%",
-      "detail": "Average latency improvement for Lean versus baseline across the paired validation.",
+      "detail": "Average latency improvement for Lean versus baseline across 15 paired tasks producing 30 condition runs.",
       "provenance": "eval/results/PROMOTION_NOTES.md — Phase 36 validation"
     },
     {
+      "basis": {
+        "studyClass": "exploratory-mini-spike",
+        "sampleSize": 3,
+        "sampleUnit": "task",
+        "sourcePath": "eval/results/spike_summary.md",
+        "sourceCommit": "25fdc5f3a7745c0c12ba79f06b3c8a326455c57e",
+        "generalizationBoundary": "Separate three-task exploratory mini-spike only; it is not promotion evidence or evidence of general performance."
+      },
       "label": "Separate mini-spike",
       "value": "~45%",
       "detail": "Average execution-time reduction across three fixed-environment tasks in an earlier, smaller spike.",
       "provenance": "eval/results/spike_summary.md — clean Trial 3",
-      "limitation": "A three-task exploratory result reported separately from the 30-trial promotion validation."
+      "limitation": "A three-task exploratory result reported separately from the 15-paired-task, 30-condition-run promotion validation."
     }
   ],
   "links": [],

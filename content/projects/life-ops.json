@@ -39,7 +39,20 @@
     }
   ],
   "links": [],
-  "media": [],
+  "media": [
+    {
+      "alt": "Sanitized diagram of six LifeOps conversation lanes passing through authority and routing checks into durable updates or human review",
+      "kind": "image",
+      "label": "Six focused lanes share one governed routing layer and a four-step write-safety policy.",
+      "src": "https://www.ybfstudio.com/work/life-ops/routing-system.svg"
+    },
+    {
+      "alt": "Sanitized four-stage walkthrough from conversational request to scoped action, verified execution, and durable record",
+      "kind": "image",
+      "label": "A real operating pattern shown with synthetic content: request, scope, execute, verify, and record.",
+      "src": "https://www.ybfstudio.com/work/life-ops/automation-walkthrough.svg"
+    }
+  ],
   "narrative": {
     "problem": {
       "title": "A second brain fails when capture creates more maintenance.",
