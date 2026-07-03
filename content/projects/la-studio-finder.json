@@ -18,6 +18,9 @@
   ],
   "accent": "sea",
   "ownership": "Original directory product, data workflow, search experience, content system, deployment, and production operations. Studio facts originate from public business information and are maintained as directory data.",
+  "sourceRepositories": [
+    "JOHNNYMACONNY/la-studio-finder"
+  ],
   "evidence": [
     {
       "label": "Production",
@@ -42,9 +45,27 @@
       "label": "Open live directory",
       "href": "https://www.larecordingstudiofinder.com",
       "kind": "live"
+    },
+    {
+      "label": "Inspect source repository",
+      "href": "https://github.com/JOHNNYMACONNY/la-studio-finder",
+      "kind": "source"
     }
   ],
-  "media": [],
+  "media": [
+    {
+      "alt": "LA Studio Finder directory showing neighborhood controls, service and verification filters, sorting, and studio cards",
+      "kind": "image",
+      "label": "The live directory combines quick paths, neighborhood controls, structured filters, verification state, and comparable cards.",
+      "src": "https://www.ybfstudio.com/work/la-studio-finder/directory-filters.png"
+    },
+    {
+      "alt": "LA Studio Finder detail page for Beach House Studios with navigation and a large studio photograph",
+      "kind": "image",
+      "label": "A production studio-detail route carries real imagery and decision context into an individual listing.",
+      "src": "https://www.ybfstudio.com/work/la-studio-finder/studio-detail.png"
+    }
+  ],
   "narrative": {
     "problem": {
       "title": "Finding a studio is a local-data problem disguised as a search box.",
