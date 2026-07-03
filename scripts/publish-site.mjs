@@ -28,13 +28,21 @@ const response = await fetch(`${siteUrl}/api/portfolio/revalidate`, {
 if (!response.ok) throw new Error(`Revalidation endpoint returned ${response.status}`);
 
 const deadline = Date.now() + 60_000;
+const routes = Array.from(new Set([
+  '/',
+  '/work',
+  ...(affected.changedSlugs || []).map((slug) => `/work/${slug}`),
+]));
 while (Date.now() < deadline) {
-  const health = await fetch(`${siteUrl}/work`, { headers: { 'Cache-Control': 'no-cache' } });
-  const html = await health.text();
-  if (health.ok && html.includes(`name="portfolio-content-sha" content="${contentSha}"`)) {
-    console.log(`Published and verified ${contentSha}`);
+  const checks = await Promise.all(routes.map(async (route) => {
+    const health = await fetch(`${siteUrl}${route}`, { headers: { 'Cache-Control': 'no-cache' } });
+    const html = await health.text();
+    return { route, passed: health.ok && html.includes(`name="portfolio-content-sha" content="${contentSha}"`) };
+  }));
+  if (checks.every((check) => check.passed)) {
+    console.log(`Published and verified ${contentSha} on ${routes.join(', ')}`);
     process.exit(0);
   }
   await new Promise((resolve) => setTimeout(resolve, 5_000));
 }
-throw new Error(`Live /work did not report expected content SHA ${contentSha}`);
+throw new Error(`Live routes did not report expected content SHA ${contentSha}: ${routes.join(', ')}`);
