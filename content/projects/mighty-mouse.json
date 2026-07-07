@@ -151,7 +151,18 @@
       "kind": "evidence"
     }
   ],
-  "media": [],
+  "media": [
+    {
+      "alt": "Captioned Mighty Mouse workflow demo showing a real protocol response, disposable task scope, pytest verification, structured result, and explicit study limitations",
+      "kind": "video",
+      "label": "An 80-second, captioned walkthrough uses real v0.2.1 CLI output and a disposable Python task to show the protocol-to-verification workflow without overstating the paired-study result.",
+      "src": "https://www.ybfstudio.com/work/mighty-mouse/mighty-mouse-demo.mp4",
+      "posterSrc": "https://www.ybfstudio.com/work/mighty-mouse/mighty-mouse-demo-poster.jpg",
+      "captionSrc": "https://www.ybfstudio.com/work/mighty-mouse/mighty-mouse-demo.vtt",
+      "captionLanguage": "en",
+      "captionLabel": "English"
+    }
+  ],
   "narrative": {
     "problem": {
       "title": "Agent output is not proof that a coding task is complete.",
