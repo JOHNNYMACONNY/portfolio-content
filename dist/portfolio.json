@@ -139,6 +139,7 @@
           "captionLabel": "English",
           "captionLanguage": "en",
           "captionSrc": "https://www.ybfstudio.com/work/mighty-mouse/mighty-mouse-demo.vtt",
+          "integrity": "sha256-KNNEjcAsifFBa80CIieps+ynptcQvlYYY80CYkNmGKQ=",
           "kind": "video",
           "label": "An 80-second, captioned walkthrough uses real v0.2.1 CLI output and a disposable Python task to show the protocol-to-verification workflow without overstating the paired-study result.",
           "posterSrc": "https://www.ybfstudio.com/work/mighty-mouse/mighty-mouse-demo-poster.jpg",

@@ -160,7 +160,8 @@
       "posterSrc": "https://www.ybfstudio.com/work/mighty-mouse/mighty-mouse-demo-poster.jpg",
       "captionSrc": "https://www.ybfstudio.com/work/mighty-mouse/mighty-mouse-demo.vtt",
       "captionLanguage": "en",
-      "captionLabel": "English"
+      "captionLabel": "English",
+      "integrity": "sha256-KNNEjcAsifFBa80CIieps+ynptcQvlYYY80CYkNmGKQ="
     }
   ],
   "narrative": {
