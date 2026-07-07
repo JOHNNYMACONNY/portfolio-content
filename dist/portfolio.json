@@ -133,7 +133,18 @@
           "label": "Platform MCP smoke report"
         }
       ],
-      "media": [],
+      "media": [
+        {
+          "alt": "Captioned Mighty Mouse workflow demo showing a real protocol response, disposable task scope, pytest verification, structured result, and explicit study limitations",
+          "captionLabel": "English",
+          "captionLanguage": "en",
+          "captionSrc": "https://www.ybfstudio.com/work/mighty-mouse/mighty-mouse-demo.vtt",
+          "kind": "video",
+          "label": "An 80-second, captioned walkthrough uses real v0.2.1 CLI output and a disposable Python task to show the protocol-to-verification workflow without overstating the paired-study result.",
+          "posterSrc": "https://www.ybfstudio.com/work/mighty-mouse/mighty-mouse-demo-poster.jpg",
+          "src": "https://www.ybfstudio.com/work/mighty-mouse/mighty-mouse-demo.mp4"
+        }
+      ],
       "narrative": {
         "buildRecord": [
           {
