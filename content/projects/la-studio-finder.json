@@ -45,11 +45,6 @@
       "label": "Open live directory",
       "href": "https://www.larecordingstudiofinder.com",
       "kind": "live"
-    },
-    {
-      "label": "Inspect source repository",
-      "href": "https://github.com/JOHNNYMACONNY/la-studio-finder",
-      "kind": "source"
     }
   ],
   "media": [
@@ -70,7 +65,7 @@
     "problem": {
       "title": "Finding a studio is a local-data problem disguised as a search box.",
       "body": [
-        "Artists often compare studios across scattered social profiles, map listings, outdated websites, and word of mouth. Important differences—location, room type, equipment, services, and fit—are difficult to evaluate consistently.",
+        "Artists often compare studios across scattered social profiles, map listings, outdated websites, and word of mouth. Differences in location, room type, equipment, services, and fit are difficult to evaluate consistently.",
         "The directory creates one browsable decision surface while giving individual studios durable, search-friendly pages."
       ]
     },
