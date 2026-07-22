@@ -1,22 +1,23 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "2026-07-03.2",
-  "publishedAt": "2026-07-03T18:25:37.000Z",
+  "contentVersion": "2026-07-21.1",
+  "publishedAt": "2026-07-22T06:23:33.000Z",
   "minimumWebsiteSchemaVersion": 1,
   "flagshipOrder": [
+    "la-studio-finder",
     "mighty-mouse",
-    "life-ops",
-    "la-studio-finder"
+    "tradeya"
   ],
   "homepageOrder": [
+    "la-studio-finder",
     "mighty-mouse",
-    "life-ops",
-    "la-studio-finder"
+    "tradeya"
   ],
   "projectFiles": {
     "mighty-mouse": "content/projects/mighty-mouse.json",
     "life-ops": "content/projects/life-ops.json",
-    "la-studio-finder": "content/projects/la-studio-finder.json"
+    "la-studio-finder": "content/projects/la-studio-finder.json",
+    "tradeya": "content/projects/tradeya.json"
   },
   "supportingFile": "content/supporting/projects.json",
   "redirects": []

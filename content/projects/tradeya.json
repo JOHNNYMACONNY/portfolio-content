@@ -1,0 +1,171 @@
+{
+  "slug": "tradeya",
+  "title": "TradeYa",
+  "shortOutcome": "A live skill-trade marketplace being hardened from a broad web product into a maintainable foundation for mobile expansion.",
+  "kind": "product",
+  "discipline": "Full-stack product / marketplace operations",
+  "status": "active",
+  "year": 2026,
+  "role": "Product designer, full-stack developer, and operator",
+  "featured": true,
+  "homepage": true,
+  "tags": [
+    "React",
+    "TypeScript",
+    "Firebase",
+    "Playwright",
+    "Product operations"
+  ],
+  "accent": "warm",
+  "ownership": "I own the product direction, interface, application architecture, Firebase integration, quality systems, deployment workflow, and current maintainability work. Firebase, React, and the other platform dependencies remain third-party technology.",
+  "sourceRepositories": [
+    "JOHNNYMACONNY/silver-fortnight"
+  ],
+  "lastVerifiedAt": "2026-07-22T06:23:33.000Z",
+  "evidence": [
+    {
+      "label": "Production",
+      "value": "Live",
+      "detail": "The marketplace is operating on its public custom domain while the current facelift and reliability pass continue.",
+      "provenance": "Public production route and repository deployment configuration",
+      "sourceUrl": "https://tradeya.io",
+      "verifiedAt": "2026-07-22T06:23:33.000Z"
+    },
+    {
+      "label": "Marketplace scope",
+      "value": "Trades + collaboration",
+      "detail": "The product covers skill trades, collaborations, challenges, profiles, messaging, reviews, and community activity.",
+      "provenance": "Repository AGENTS.md and feature-domain source structure",
+      "verifiedAt": "2026-07-22T06:23:33.000Z"
+    },
+    {
+      "label": "Quality gates",
+      "value": "Unit + E2E",
+      "detail": "The repository defines TypeScript, lint, Jest, Playwright, Firebase security, asset-bloat, and production build checks.",
+      "provenance": "Repository package.json scripts and AGENTS.md verification contract",
+      "verifiedAt": "2026-07-22T06:23:33.000Z",
+      "limitation": "The active hardening phase means individual features still require current verification before release claims."
+    }
+  ],
+  "links": [
+    {
+      "label": "Open live marketplace",
+      "href": "https://tradeya.io",
+      "kind": "live"
+    }
+  ],
+  "media": [],
+  "narrative": {
+    "problem": {
+      "title": "Creative collaboration breaks when trust, scope, and exchange live in separate places.",
+      "body": [
+        "People can offer useful skills and still struggle to find a fair counterpart, define the exchange, communicate through delivery, and preserve evidence of the result.",
+        "TradeYa puts discovery, trade proposals, collaboration, messaging, reviews, and community participation into one product while keeping the exchange centered on skills rather than cash."
+      ]
+    },
+    "ownership": {
+      "title": "A first-party product spanning interface, marketplace state, and production operations.",
+      "body": [
+        "I direct and implement the product, including the React application, Firebase data paths, marketplace workflows, design system, tests, security checks, and deployment operations.",
+        "The current work is not a claim that every feature is finished. The facelift is paired with feature verification and maintainability work before mobile expansion."
+      ]
+    },
+    "systemMap": [
+      {
+        "label": "Member identity",
+        "detail": "Authentication, profiles, skills, reputation, and availability establish who can participate.",
+        "stage": "input"
+      },
+      {
+        "label": "Marketplace discovery",
+        "detail": "Trades, collaborations, challenges, builders, and community activity expose possible matches.",
+        "stage": "output"
+      },
+      {
+        "label": "Proposal state",
+        "detail": "Scope, participants, status, and evidence move through explicit marketplace records.",
+        "stage": "state"
+      },
+      {
+        "label": "Trust controls",
+        "detail": "Validation, Firestore rules, reviews, and moderation boundaries constrain unsafe transitions.",
+        "stage": "decision"
+      },
+      {
+        "label": "Collaboration loop",
+        "detail": "Messaging, notifications, progress, and delivery evidence support the work after a match.",
+        "stage": "state"
+      },
+      {
+        "label": "Verification and repair",
+        "detail": "Tests, production checks, and the current hardening pass return broken or inconsistent flows to implementation.",
+        "stage": "failure"
+      }
+    ],
+    "decisions": [
+      {
+        "title": "Treat Firestore shape as a product contract",
+        "decision": "Keep denormalized display fields, indexes, security rules, and migration behavior explicit rather than letting UI needs mutate data ad hoc.",
+        "consequence": "Marketplace surfaces can evolve without silently weakening trust or breaking older records."
+      },
+      {
+        "title": "Harden the web product before mobile expansion",
+        "decision": "Finish the facelift alongside feature verification and maintainability work before treating iOS as an active product surface.",
+        "consequence": "Mobile work can start from understood behavior instead of duplicating unresolved web debt."
+      },
+      {
+        "title": "Use real marketplace content as the visual proof",
+        "decision": "Prefer real trades, collaborations, challenges, builders, and activity over abstract dashboard statistics.",
+        "consequence": "The interface communicates user value instead of decorating incomplete product state."
+      }
+    ],
+    "buildRecord": [
+      {
+        "label": "01 / MODEL",
+        "title": "Marketplace domains",
+        "detail": "Trades, collaborations, challenges, profiles, messages, reviews, and evidence have explicit service and data boundaries."
+      },
+      {
+        "label": "02 / BUILD",
+        "title": "React product system",
+        "detail": "TypeScript, Vite, React Query, shared UI primitives, and feature modules form the client application."
+      },
+      {
+        "label": "03 / OPERATE",
+        "title": "Firebase production layer",
+        "detail": "Authentication, Firestore, Cloud Functions, storage, indexes, security rules, and migration tooling support production state."
+      },
+      {
+        "label": "04 / VERIFY",
+        "title": "Layered quality gates",
+        "detail": "Type checking, lint, unit tests, browser tests, security checks, asset budgets, and builds cover different failure classes."
+      }
+    ],
+    "failures": [
+      {
+        "title": "Feature breadth created maintenance debt",
+        "observed": "A large marketplace surface accumulated duplicate scripts, dependency age, and inconsistent implementation paths.",
+        "response": "The active phase pairs the facelift with explicit feature checks, shared primitives, dependency review, and maintainability gates.",
+        "status": "monitoring"
+      },
+      {
+        "title": "Visual polish could outrun functional proof",
+        "observed": "A facelift can make an unfinished flow look complete before its data and interaction paths are verified.",
+        "response": "Treat browser verification and feature behavior as release gates instead of accepting appearance alone.",
+        "status": "monitoring"
+      },
+      {
+        "title": "Mobile parity was easy to describe too early",
+        "observed": "The roadmap names iOS and Android outcomes while the web foundation still requires stabilization.",
+        "response": "Label mobile as preparation and sequence it after web behavior and maintainability are verified.",
+        "status": "open"
+      }
+    ],
+    "currentStatus": {
+      "title": "Live, under active hardening, and preparing for mobile expansion.",
+      "body": [
+        "TradeYa is live while the current phase refreshes the interface, checks feature behavior, and reduces maintenance risk. iOS development is the next platform direction, not a shipped capability."
+      ]
+    }
+  }
+}

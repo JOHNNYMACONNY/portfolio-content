@@ -1,14 +1,14 @@
 {
-  "contentVersion": "2026-07-03.2",
+  "contentVersion": "2026-07-21.1",
   "flagshipOrder": [
+    "la-studio-finder",
     "mighty-mouse",
-    "life-ops",
-    "la-studio-finder"
+    "tradeya"
   ],
   "homepageOrder": [
+    "la-studio-finder",
     "mighty-mouse",
-    "life-ops",
-    "la-studio-finder"
+    "tradeya"
   ],
   "projects": [
     {
@@ -254,7 +254,7 @@
             "stage": "decision"
           },
           {
-            "detail": "Failures return actionable suggestions; the agent may retry without entering an unbounded correction cycle.",
+            "detail": "Failures return specific next steps; the agent may retry without entering an unbounded correction cycle.",
             "label": "Bounded retry loop",
             "stage": "decision"
           },
@@ -519,11 +519,6 @@
           "href": "https://www.larecordingstudiofinder.com",
           "kind": "live",
           "label": "Open live directory"
-        },
-        {
-          "href": "https://github.com/JOHNNYMACONNY/la-studio-finder",
-          "kind": "source",
-          "label": "Inspect source repository"
         }
       ],
       "media": [
@@ -615,7 +610,7 @@
         },
         "problem": {
           "body": [
-            "Artists often compare studios across scattered social profiles, map listings, outdated websites, and word of mouth. Important differences—location, room type, equipment, services, and fit—are difficult to evaluate consistently.",
+            "Artists often compare studios across scattered social profiles, map listings, outdated websites, and word of mouth. Differences in location, room type, equipment, services, and fit are difficult to evaluate consistently.",
             "The directory creates one browsable decision surface while giving individual studios durable, search-friendly pages."
           ],
           "title": "Finding a studio is a local-data problem disguised as a search box."
@@ -670,9 +665,180 @@
       ],
       "title": "LA Recording Studio Finder",
       "year": 2026
+    },
+    {
+      "accent": "warm",
+      "discipline": "Full-stack product / marketplace operations",
+      "evidence": [
+        {
+          "detail": "The marketplace is operating on its public custom domain while the current facelift and reliability pass continue.",
+          "label": "Production",
+          "provenance": "Public production route and repository deployment configuration",
+          "sourceUrl": "https://tradeya.io",
+          "value": "Live",
+          "verifiedAt": "2026-07-22T06:23:33.000Z"
+        },
+        {
+          "detail": "The product covers skill trades, collaborations, challenges, profiles, messaging, reviews, and community activity.",
+          "label": "Marketplace scope",
+          "provenance": "Repository AGENTS.md and feature-domain source structure",
+          "value": "Trades + collaboration",
+          "verifiedAt": "2026-07-22T06:23:33.000Z"
+        },
+        {
+          "detail": "The repository defines TypeScript, lint, Jest, Playwright, Firebase security, asset-bloat, and production build checks.",
+          "label": "Quality gates",
+          "limitation": "The active hardening phase means individual features still require current verification before release claims.",
+          "provenance": "Repository package.json scripts and AGENTS.md verification contract",
+          "value": "Unit + E2E",
+          "verifiedAt": "2026-07-22T06:23:33.000Z"
+        }
+      ],
+      "featured": true,
+      "homepage": true,
+      "kind": "product",
+      "lastVerifiedAt": "2026-07-22T06:23:33.000Z",
+      "links": [
+        {
+          "href": "https://tradeya.io",
+          "kind": "live",
+          "label": "Open live marketplace"
+        }
+      ],
+      "media": [],
+      "narrative": {
+        "buildRecord": [
+          {
+            "detail": "Trades, collaborations, challenges, profiles, messages, reviews, and evidence have explicit service and data boundaries.",
+            "label": "01 / MODEL",
+            "title": "Marketplace domains"
+          },
+          {
+            "detail": "TypeScript, Vite, React Query, shared UI primitives, and feature modules form the client application.",
+            "label": "02 / BUILD",
+            "title": "React product system"
+          },
+          {
+            "detail": "Authentication, Firestore, Cloud Functions, storage, indexes, security rules, and migration tooling support production state.",
+            "label": "03 / OPERATE",
+            "title": "Firebase production layer"
+          },
+          {
+            "detail": "Type checking, lint, unit tests, browser tests, security checks, asset budgets, and builds cover different failure classes.",
+            "label": "04 / VERIFY",
+            "title": "Layered quality gates"
+          }
+        ],
+        "currentStatus": {
+          "body": [
+            "TradeYa is live while the current phase refreshes the interface, checks feature behavior, and reduces maintenance risk. iOS development is the next platform direction, not a shipped capability."
+          ],
+          "title": "Live, under active hardening, and preparing for mobile expansion."
+        },
+        "decisions": [
+          {
+            "consequence": "Marketplace surfaces can evolve without silently weakening trust or breaking older records.",
+            "decision": "Keep denormalized display fields, indexes, security rules, and migration behavior explicit rather than letting UI needs mutate data ad hoc.",
+            "title": "Treat Firestore shape as a product contract"
+          },
+          {
+            "consequence": "Mobile work can start from understood behavior instead of duplicating unresolved web debt.",
+            "decision": "Finish the facelift alongside feature verification and maintainability work before treating iOS as an active product surface.",
+            "title": "Harden the web product before mobile expansion"
+          },
+          {
+            "consequence": "The interface communicates user value instead of decorating incomplete product state.",
+            "decision": "Prefer real trades, collaborations, challenges, builders, and activity over abstract dashboard statistics.",
+            "title": "Use real marketplace content as the visual proof"
+          }
+        ],
+        "failures": [
+          {
+            "observed": "A large marketplace surface accumulated duplicate scripts, dependency age, and inconsistent implementation paths.",
+            "response": "The active phase pairs the facelift with explicit feature checks, shared primitives, dependency review, and maintainability gates.",
+            "status": "monitoring",
+            "title": "Feature breadth created maintenance debt"
+          },
+          {
+            "observed": "A facelift can make an unfinished flow look complete before its data and interaction paths are verified.",
+            "response": "Treat browser verification and feature behavior as release gates instead of accepting appearance alone.",
+            "status": "monitoring",
+            "title": "Visual polish could outrun functional proof"
+          },
+          {
+            "observed": "The roadmap names iOS and Android outcomes while the web foundation still requires stabilization.",
+            "response": "Label mobile as preparation and sequence it after web behavior and maintainability are verified.",
+            "status": "open",
+            "title": "Mobile parity was easy to describe too early"
+          }
+        ],
+        "ownership": {
+          "body": [
+            "I direct and implement the product, including the React application, Firebase data paths, marketplace workflows, design system, tests, security checks, and deployment operations.",
+            "The current work is not a claim that every feature is finished. The facelift is paired with feature verification and maintainability work before mobile expansion."
+          ],
+          "title": "A first-party product spanning interface, marketplace state, and production operations."
+        },
+        "problem": {
+          "body": [
+            "People can offer useful skills and still struggle to find a fair counterpart, define the exchange, communicate through delivery, and preserve evidence of the result.",
+            "TradeYa puts discovery, trade proposals, collaboration, messaging, reviews, and community participation into one product while keeping the exchange centered on skills rather than cash."
+          ],
+          "title": "Creative collaboration breaks when trust, scope, and exchange live in separate places."
+        },
+        "systemMap": [
+          {
+            "detail": "Authentication, profiles, skills, reputation, and availability establish who can participate.",
+            "label": "Member identity",
+            "stage": "input"
+          },
+          {
+            "detail": "Trades, collaborations, challenges, builders, and community activity expose possible matches.",
+            "label": "Marketplace discovery",
+            "stage": "output"
+          },
+          {
+            "detail": "Scope, participants, status, and evidence move through explicit marketplace records.",
+            "label": "Proposal state",
+            "stage": "state"
+          },
+          {
+            "detail": "Validation, Firestore rules, reviews, and moderation boundaries constrain unsafe transitions.",
+            "label": "Trust controls",
+            "stage": "decision"
+          },
+          {
+            "detail": "Messaging, notifications, progress, and delivery evidence support the work after a match.",
+            "label": "Collaboration loop",
+            "stage": "state"
+          },
+          {
+            "detail": "Tests, production checks, and the current hardening pass return broken or inconsistent flows to implementation.",
+            "label": "Verification and repair",
+            "stage": "failure"
+          }
+        ]
+      },
+      "ownership": "I own the product direction, interface, application architecture, Firebase integration, quality systems, deployment workflow, and current maintainability work. Firebase, React, and the other platform dependencies remain third-party technology.",
+      "role": "Product designer, full-stack developer, and operator",
+      "shortOutcome": "A live skill-trade marketplace being hardened from a broad web product into a maintainable foundation for mobile expansion.",
+      "slug": "tradeya",
+      "sourceRepositories": [
+        "JOHNNYMACONNY/silver-fortnight"
+      ],
+      "status": "active",
+      "tags": [
+        "React",
+        "TypeScript",
+        "Firebase",
+        "Playwright",
+        "Product operations"
+      ],
+      "title": "TradeYa",
+      "year": 2026
     }
   ],
-  "publishedAt": "2026-07-03T18:25:37.000Z",
+  "publishedAt": "2026-07-22T06:23:33.000Z",
   "redirects": [],
   "schemaVersion": 1,
   "supportingWork": [
