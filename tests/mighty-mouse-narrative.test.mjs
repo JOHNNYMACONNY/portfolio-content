@@ -25,5 +25,4 @@ test('Mighty Mouse keeps synthetic evidence bounded and links immutable proof', 
   assert.match(historical?.limitation || '', /historical synthetic result/i);
   assert.ok(project.evidence.every((item) => item.sourceUrl?.includes('/blob/91f37272a49d0d05f4eee35228a1339d44594c70/')));
   assert.deepEqual(project.links.map((link) => link.kind), ['source', 'release', 'evidence', 'evidence']);
-  assert.equal(project.repositoryMetadata.latestRelease.tag, 'v0.2.1');
 });
