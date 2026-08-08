@@ -291,12 +291,12 @@
   "repositoryMetadata": {
     "archived": false,
     "latestRelease": {
-      "tag": "v0.2.3",
-      "publishedAt": "2026-08-07T19:17:20Z",
-      "url": "https://github.com/JOHNNYMACONNY/mighty-mouse/releases/tag/v0.2.3"
+      "tag": "v0.2.4",
+      "publishedAt": "2026-08-08T07:43:49Z",
+      "url": "https://github.com/JOHNNYMACONNY/mighty-mouse/releases/tag/v0.2.4"
     },
     "primaryLanguage": "Python",
-    "pushedAt": "2026-08-08T00:22:33Z",
+    "pushedAt": "2026-08-08T07:43:35Z",
     "repository": "JOHNNYMACONNY/mighty-mouse",
     "topics": [],
     "url": "https://github.com/JOHNNYMACONNY/mighty-mouse"
